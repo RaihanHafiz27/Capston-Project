@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* import fonts */
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto.tff") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Medium.tff") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
