@@ -1,7 +1,9 @@
+import { FormRegister } from "../components/fragments/Form/FromRegister";
+
 export const RegisterPage = () => {
   return (
-    <div>
-      <div>hello register</div>
+    <div className="w-full">
+      <FormRegister />
     </div>
   );
 };

@@ -8,58 +8,78 @@ import { ProfileIcon } from "../../elements/icons/ProfileIcon";
 import { HomeIcon } from "../../elements/icons/HomeIcon";
 import { HamburgerIcon } from "../../elements/icons/HamburgerIcon";
 import { HamburgerBtn } from "../../elements/Button/Hamburger/HamburgerButon";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { EllipsisIcon } from "../../elements/icons/EllipsisIcon";
 
 const navbarItems = [
   {
-    icon: <HomeIcon />,
     title: "Home",
     to: "/",
   },
   {
-    icon: <ProductsIcon />,
     title: "Products",
     to: "/products",
   },
-  // {
-  //   icon: <CartIcon />,
-  //   title: "Cart",
-  //   to: "/cart",
-  // },
   {
-    icon: <ProfileIcon />,
-    title: "Profile",
-    to: "/profile",
+    title: "About Us",
+    to: "/products",
+  },
+  {
+    title: "Contact Us",
+    to: "/products",
+  },
+  {
+    title: "Services",
+    to: "",
   },
 ];
 
-const mobileNavbarItems = [
+const subLinksServices = [
   {
-    icon: <HomeIcon />,
-    title: "Home",
+    title: "Faq",
     to: "/",
   },
   {
-    icon: <ProductsIcon />,
-    title: "Products",
-    to: "/products",
+    title: "Help",
+    to: "/",
   },
   {
-    icon: <CartIcon />,
-    title: "Cart",
-    to: "/cart",
+    title: "Returns",
+    to: "/",
   },
   {
-    icon: <ProfileIcon />,
-    title: "Profile",
-    to: "/profile",
+    title: "Order Tracking",
+    to: "/",
   },
+];
+
+const ellipsisLinks = [
+  { title: "Profile", to: "/profile" },
+  { title: "Order History", to: "/orders" },
+  { title: "Wishlist", to: "/wishlist" },
+  { title: "Login", to: "/signin" },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const [isHover, setIsHover] = useState(false);
   // console.log(path.pathname);
+  const sidebarRef = useRef(null);
+
+  // Close sidebar if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const isHome = location.pathname === "/";
   const textColor = isHome ? "text-white" : "text-white";
@@ -81,20 +101,7 @@ export const Navbar = () => {
         </div>
         {/* links for large screen */}
         <div className="items-center justify-center hidden lg:flex">
-          <ul className="flex flex-col items-center space-x-8 list-none lg:flex-row">
-            {navbarItems.map((item) => (
-              <li key={item.title}>
-                {/* font-Roboto  */}
-                <Link
-                  to={item.to}
-                  className={`flex items-center text-sm font-Poppins font-semibold leading-snug tracking-widest uppercase  2xl:text-base space-x-1 ${textColor}`}
-                >
-                  {/* <i>{item.icon}</i> */}
-                  <span className="">{item.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <LinksLargeScreen textColor={textColor} />
         </div>
         <div className="items-center justify-center hidden space-x-4 lg:flex">
           <Link
@@ -106,49 +113,186 @@ export const Navbar = () => {
               1
             </p>
           </Link>
-          <Link
-            to={"/signin"}
-            className={`flex items-center text-sm 2xl:text-base font-semibold leading-snug tracking-widest uppercase bg-transparent hover:bg-transparent lg:py-0 font-Roboto ${textColor}`}
-            // onClick={handleLogout}
-          >
-            logout
-          </Link>
+          <EllipsisMenu />
         </div>
       </div>
       <div
-        className={`flex flex-col absolute w-64 h-screen bg-gray-800 lg:hidden transition-all duration-500 right-0 top-0 ${
+        ref={sidebarRef}
+        className={`flex flex-col absolute w-64 h-screen bg-gray-900 lg:hidden transition-all duration-500 right-0 top-0 ${
           !isOpen ? "translate-x-full" : "translate-x-0"
         }`}
       >
         <div className="flex items-center justify-between p-3 border border-pink-600 text-slate-200">
           <div className="flex items-center justify-center">
-            <img src="/images/user.png" alt="profile" className="w-8 h-auto" />
-            <p className="ml-2">KannaAnissa</p>
+            <div className="flex items-center justify-center">
+              <img src="/images/user.png" alt="profile" className="w-8 h-8" />
+              <p className="ml-2 text-sm">KannaAnissa</p>
+            </div>
+            <div className="ml-2">
+              <EllipsisMenu />
+            </div>
           </div>
           <HamburgerBtn onClick={() => setIsOpen(!isOpen)} isOpen={isOpen} />
         </div>
         <div className="flex-1 mt-8 border border-white">
-          <ul className="flex flex-col items-center justify-center space-y-8">
-            {mobileNavbarItems.map((item) => (
-              <li
-                key={item.title}
-                className="w-4/5 py-2 rounded-md bg-amber-600"
-              >
-                <Link
-                  to={item.to}
-                  className="flex items-center justify-center text-slate-200 "
-                >
-                  <i>{item.icon}</i>
-                  <span className="ml-2">{item.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="w-4/5 mx-auto mb-10">
-          <Button>logput</Button>
+          <LinksMobileScreen
+            textColor={textColor}
+            location={location.pathname}
+          />
         </div>
       </div>
     </nav>
+  );
+};
+
+const LinksLargeScreen = (props) => {
+  const { textColor } = props;
+  const [isHover, setIsHover] = useState(false);
+  return (
+    <ul className="flex items-center justify-center space-x-6 list-none ">
+      {navbarItems.map((item) => (
+        <li
+          key={item.title}
+          className="relative"
+          onMouseEnter={() => item.title === "Services" && setIsHover(true)}
+          onMouseLeave={() => item.title === "Services" && setIsHover(false)}
+          onClick={() => item.title === "Services" && setIsHover(!isHover)}
+        >
+          <Link
+            to={item.to}
+            className={`flex items-center text-xs 2xl:text-sm font-Poppins font-semibold leading-snug tracking-wide uppercase  ${textColor}`}
+          >
+            {item.title}
+            {item.title === "Services" && (
+              <img
+                src={"/images/arrow-white.png"}
+                width={20}
+                height={10}
+                alt="arrow"
+                className={`ml-2 w-4 h-4 ${
+                  isHover ? "rotate-90" : "rotate-0"
+                } transition duration-500 ease-in-out`}
+              />
+            )}
+          </Link>
+          {item.title === "Services" && (
+            <ul
+              className={`bg-white absolute w-48 -left-12 top-6 lg:top-5 transition-all duration-500 ease-in-out rounded-md ${
+                isHover ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
+            >
+              {subLinksServices.map((sub) => (
+                <li key={sub.id} className="px-4 py-2">
+                  <Link
+                    className="text-sm text-gray-700 hover:text-amber-500 lg:text-base"
+                    to={sub.link}
+                  >
+                    {sub.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const LinksMobileScreen = (props) => {
+  const { location } = props;
+  const [subHover, setSubHover] = useState(false);
+  return (
+    <ul className="flex flex-col items-center justify-center space-y-8">
+      {navbarItems.map((item) => (
+        <li
+          key={item.title}
+          className={`relative w-11/12 py-2 rounded-md ${
+            location === item.to ? "bg-gray-600" : ""
+          }`}
+        >
+          <Link
+            to={item.to}
+            className="flex items-center justify-center text-slate-200 "
+            onClick={() => item.title === "Services" && setSubHover(!subHover)}
+          >
+            <span className="ml-2">{item.title}</span>
+            {item.title === "Services" && (
+              <ul
+                className={`bg-white absolute w-48  top-12 transition-all duration-300 ease-in-out rounded-md py-4 px-2 ${
+                  subHover
+                    ? "translate-y-0 opacity-100 visible"
+                    : "-translate-y-10 opacity-0 invisible"
+                }`}
+              >
+                {subLinksServices.map((sub) => (
+                  <li key={sub.id} className="my-2 ">
+                    <Link
+                      className="text-sm text-gray-700 hover:text-amber-500 lg:text-base"
+                      to={sub.link}
+                    >
+                      {sub.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+// Komponen Dropdown Menu
+const DropdownMenu = ({ links, isOpen, closeMenu }) => {
+  return (
+    <div
+      className={`z-10 absolute top-8 -right-10 lg:left-0 w-48 bg-white rounded-lg shadow-lg text-black transition-all duration-300 ${
+        isOpen
+          ? "scale-100 opacity-100"
+          : "scale-75 opacity-0 pointer-events-none"
+      }`}
+    >
+      {links.map((link, index) => (
+        <Link
+          key={index}
+          to={link.to}
+          className="block px-4 py-2 hover:bg-gray-100"
+          onClick={closeMenu}
+        >
+          {link.title}
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+// Komponen Ellipsis Menu
+const EllipsisMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="relative flex items-center justify-center">
+      {/* Tombol Titik Tiga */}
+      <button onClick={toggleMenu} className="">
+        <EllipsisIcon />
+      </button>
+
+      {/* Dropdown Menu */}
+      <DropdownMenu
+        links={ellipsisLinks}
+        isOpen={isOpen}
+        closeMenu={closeMenu}
+      />
+    </div>
   );
 };

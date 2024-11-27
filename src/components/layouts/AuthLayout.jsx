@@ -5,12 +5,14 @@ import { NavbarTitle } from "../fragments/Navbar/NavbarTitle";
 import { useState } from "react";
 import TypewriterComponent from "typewriter-effect";
 import { SignInWith } from "../fragments/SignInWith";
+import { FormLogin } from "../fragments/Form/FormLogin";
 
-export const AuthLayout = () => {
+export const AuthLayout = ({ children }) => {
+  console.log(children);
+
   const [isHover, setIsHover] = useState(false);
   return (
     <div className=" w-screen h-screen border-2 border-blue-800 bg-[url('/images/17178.jpg')] bg-cover bg-center">
-      {/* <Outlet /> */}
       <div className="flex flex-col w-full h-full border-2 border-pink-500">
         <div className="p-5">
           <NavbarTitle />
@@ -27,6 +29,11 @@ export const AuthLayout = () => {
               onMouseLeave={() => setIsHover(false)}
             >
               <Navigation />
+              <div className="flex flex-col w-4/5 lg:w-4/5">
+                <Outlet />
+                {children}
+                {/* <FormLogin /> */}
+              </div>
               <div className="inline-flex items-center justify-center w-full my-4">
                 <hr className="w-1/5 lg:w-1/4 h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>
                 <p className="mx-2 text-sm text-gray-600 md:text-base">
@@ -54,14 +61,14 @@ const Navigation = () => {
             strings: [
               location.pathname === "/signin"
                 ? "Welcome to Login Page"
-                : "Welcome to RegisterPage",
+                : "Welcome to Register Page",
             ],
             autoStart: true,
             loop: true,
-            delay: 250, // Menyesuaikan kecepatan pengetikan
-            deleteSpeed: 50, // Menyesuaikan kecepatan penghapusan
-            cursor: "|", // Mengubah tampilan cursor
-            cursorClassName: "Typewriter__cursor", // Menggunakan class untuk lebih mengontrol gaya cursor
+            delay: 250,
+            deleteSpeed: 50,
+            cursor: "|",
+            cursorClassName: "Typewriter__cursor",
           }}
         />
       </div>

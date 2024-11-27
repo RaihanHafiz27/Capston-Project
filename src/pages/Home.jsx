@@ -47,7 +47,7 @@ export const HomePage = () => {
             />
           </div>
 
-          <p className="mx-auto my-6 text-sm text-justify lg:w-full lg:text-start lg:my-4 2xl:my-6 lg:text-base 2xl:text-xl text-slate-200 font-Roboto">
+          <p className="mx-auto my-6 text-sm text-justify lg:w-full lg:text-start lg:my-4 2xl:my-6 lg:text-base 2xl:text-lg text-slate-200 font-Roboto">
             Discover the epitome of luxury, elegance, and sophistication.
             Explore our collection of premium products designed just for you.
             Shop with ease, enjoy seamless transactions, and elevate your
