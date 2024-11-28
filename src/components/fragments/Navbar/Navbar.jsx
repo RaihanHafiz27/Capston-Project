@@ -10,26 +10,35 @@ import { HamburgerIcon } from "../../elements/icons/HamburgerIcon";
 import { HamburgerBtn } from "../../elements/Button/Hamburger/HamburgerButon";
 import { useEffect, useRef, useState } from "react";
 import { EllipsisIcon } from "../../elements/icons/EllipsisIcon";
+import { Cart } from "../../elements/Cart/Cart";
+import { AboutIcon } from "../../elements/icons/AboutIcon";
+import { ServiceIcon } from "../../elements/icons/ServiceIcon";
+import { ContactIcon } from "../../elements/icons/ContactIcon";
 
 const navbarItems = [
   {
     title: "Home",
+    icon: <HomeIcon />,
     to: "/",
   },
   {
     title: "Products",
+    icon: <ProductsIcon />,
     to: "/products",
   },
   {
     title: "About Us",
+    icon: <AboutIcon />,
     to: "/products",
   },
   {
     title: "Contact Us",
+    icon: <ContactIcon />,
     to: "/products",
   },
   {
     title: "Services",
+    icon: <ServiceIcon />,
     to: "",
   },
 ];
@@ -104,15 +113,7 @@ export const Navbar = () => {
           <LinksLargeScreen textColor={textColor} />
         </div>
         <div className="items-center justify-center hidden space-x-4 lg:flex">
-          <Link
-            to={"/"}
-            className={`relative flex items-center text-sm font-Roboto font-semibold leading-snug tracking-widest uppercase  2xl:text-base space-x-1 ${textColor}`}
-          >
-            <CartIcon />
-            <p className="absolute px-1 text-xs text-white bg-red-500 rounded-full -left-2 -top-1">
-              1
-            </p>
-          </Link>
+          <Cart textColor={textColor} />
           <EllipsisMenu />
         </div>
       </div>
@@ -128,7 +129,8 @@ export const Navbar = () => {
               <img src="/images/user.png" alt="profile" className="w-8 h-8" />
               <p className="ml-2 text-sm">KannaAnissa</p>
             </div>
-            <div className="ml-2">
+            <div className="flex ml-2 space-x-2">
+              <Cart textColor={textColor} />
               <EllipsisMenu />
             </div>
           </div>
@@ -216,7 +218,10 @@ const LinksMobileScreen = (props) => {
             className="flex items-center justify-center text-slate-200 "
             onClick={() => item.title === "Services" && setSubHover(!subHover)}
           >
-            <span className="ml-2">{item.title}</span>
+            <div className="flex items-center justify-between w-3/5 pl-6 ">
+              <i>{item.icon}</i>
+              <span className="flex-1 ml-2">{item.title}</span>
+            </div>
             {item.title === "Services" && (
               <ul
                 className={`bg-white absolute w-48  top-12 transition-all duration-300 ease-in-out rounded-md py-4 px-2 ${

@@ -1,43 +1,32 @@
 import { useState } from "react";
-// import { login } from "../../../services/login.service";
 import { InputForm } from "../../elements/Input/Index";
 import { Button } from "../../elements/Button/Primary/Button";
-import { getUsers } from "../../../services/login";
+import { login } from "../../../services/login";
+import { useNavigate } from "react-router-dom";
 
 export const FormLogin = () => {
-  // const [isLoginFailed, setIsLoginFailed] = useState("");
-
-  // const handleLogin = (event) => {
-  //   event.preventDefault();
-
-  //   const data = {
-  //     username: event.target.username.value,
-  //     password: event.target.password.value,
-  //   };
-
-  //   login(data, (status, token) => {
-  //     if (status) {
-  //       localStorage.setItem("token", token);
-  //       window.location.href = "/home";
-  //     } else {
-  //       setIsLoginFailed(token);
-  //     }
-  //   });
-  // };
-
-  getUsers();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoginFailed, setIsLoginFailed] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const data = {
+    setIsLoading(true); // Mulai loading
+    const dataUser = {
       username: e.target.username.value,
       password: e.target.password.value,
     };
 
-    localStorage.setItem("username :", data.username);
-    localStorage.setItem("password :", data.password);
-
-    console.log(data.username);
+    login(dataUser, (status, token) => {
+      setIsLoading(false); // Selesai loading
+      if (status) {
+        localStorage.setItem("token", token);
+        navigate("/products");
+      } else {
+        setIsLoginFailed(token);
+      }
+    });
   };
 
   return (
@@ -48,18 +37,31 @@ export const FormLogin = () => {
         label="Username"
         placeholder="Johnd doang"
       />
-      <InputForm
-        name="password"
-        type="password"
-        label="Password"
-        placeholder="**********"
-      />
-      <Button type="submit">Login</Button>
-      {/* {isLoginFailed && (
+      <div className="relative">
+        <InputForm
+          name="password"
+          type={isPasswordVisible ? "text" : "password"}
+          label="Password"
+          placeholder="**********"
+        />
+        <button
+          className="absolute right-0 top-3"
+          onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+        >
+          {isPasswordVisible ? (
+            <img src="/images/show.png" alt="icon" className="w-5 h-5" />
+          ) : (
+            <img src="/images/hide.png" alt="icon" className="w-5 h-5" />
+          )}
+        </button>
+      </div>
+
+      <Button type="submit">{isLoading ? "Loading...." : "Submit"}</Button>
+      {isLoginFailed && (
         <p className="mt-2 text-center text-red-600 font-Roboto">
           {isLoginFailed}
         </p>
-      )} */}
+      )}
     </form>
   );
 };

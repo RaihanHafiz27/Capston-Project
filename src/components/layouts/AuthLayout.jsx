@@ -8,8 +8,6 @@ import { SignInWith } from "../fragments/SignInWith";
 import { FormLogin } from "../fragments/Form/FormLogin";
 
 export const AuthLayout = ({ children }) => {
-  console.log(children);
-
   const [isHover, setIsHover] = useState(false);
   return (
     <div className=" w-screen h-screen border-2 border-blue-800 bg-[url('/images/17178.jpg')] bg-cover bg-center">
