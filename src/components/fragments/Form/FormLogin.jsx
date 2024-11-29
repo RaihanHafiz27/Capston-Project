@@ -35,7 +35,7 @@ export const FormLogin = () => {
         name="username"
         type="text"
         label="Username"
-        placeholder="Johnd doang"
+        placeholder="Enter Your Username"
       />
       <div className="relative">
         <InputForm

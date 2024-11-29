@@ -7,7 +7,7 @@ export const GoogleIcon = () => {
       x="0"
       y="0"
       viewBox="0 0 48 48"
-      className="w-8 h-8"
+      className="h-7 w-7"
     >
       <path
         fill="#FFC107"

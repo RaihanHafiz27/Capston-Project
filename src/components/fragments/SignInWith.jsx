@@ -3,11 +3,11 @@ import { GoogleIcon } from "../elements/icons/GoogleIcon";
 
 export const SignInWith = () => {
   return (
-    <div className="flex items-center justify-center mb-2 md:mb-4">
-      <a href="" className="mx-2">
+    <div className="flex items-center justify-center mb-2 space-x-4 md:mb-4">
+      <a href="">
         <GoogleIcon />
       </a>
-      <a href="" className="mx-2">
+      <a href="">
         <FacebookIcon />
       </a>
     </div>

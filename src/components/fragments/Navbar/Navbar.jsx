@@ -184,7 +184,7 @@ const LinksLargeScreen = (props) => {
               }`}
             >
               {subLinksServices.map((sub) => (
-                <li key={sub.id} className="px-4 py-2">
+                <li key={sub.title} className="px-4 py-2">
                   <Link
                     className="text-sm text-gray-700 hover:text-amber-500 lg:text-base"
                     to={sub.link}
@@ -231,7 +231,7 @@ const LinksMobileScreen = (props) => {
                 }`}
               >
                 {subLinksServices.map((sub) => (
-                  <li key={sub.id} className="my-2 ">
+                  <li key={sub.title} className="my-2 ">
                     <Link
                       className="text-sm text-gray-700 hover:text-amber-500 lg:text-base"
                       to={sub.link}

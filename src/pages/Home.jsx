@@ -14,7 +14,7 @@ export const HomePage = () => {
     }
   };
   return (
-    <div className="relative flex items-center justify-center h-screen bg-center bg-cover border-2 border-pink-500">
+    <section className="relative flex items-center justify-center h-screen bg-center bg-cover border-2 border-pink-500">
       <video
         ref={videoRef}
         autoPlay
@@ -65,6 +65,6 @@ export const HomePage = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

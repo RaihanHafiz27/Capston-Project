@@ -1,27 +1,5 @@
 import { jwtDecode } from "jwt-decode";
 
-// export const login = (data, callback) => {
-//   fetch("https://fakestoreapi.com/auth/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(data),
-//   })
-//     .then((res) => {
-//       if (!res.ok) {
-//         throw new Error("username or password is incorrect");
-//       }
-//       return res.json();
-//     })
-//     .then((data) => {
-//       callback(true, data.token);
-//     })
-//     .catch((error) => {
-//       callback(false, error.message);
-//     });
-// };
-
 export const login = async (dataUser, callback) => {
   try {
     const response = await fetch("https://fakestoreapi.com/auth/login", {

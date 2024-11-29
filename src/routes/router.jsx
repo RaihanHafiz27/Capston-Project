@@ -5,6 +5,7 @@ import { MainLayout } from "../components/layouts/Mainlayout";
 import { LoginPage } from "../pages/Signin";
 import { AuthLayout } from "../components/layouts/AuthLayout";
 import { RegisterPage } from "../pages/Signup";
+import { ProtectedRoute } from "./Protectedroute";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <ProductsPage />,
+        element: (
+          <ProtectedRoute>
+            <ProductsPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

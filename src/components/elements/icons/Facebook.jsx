@@ -7,7 +7,7 @@ export const FacebookIcon = () => {
       x="0"
       y="0"
       viewBox="0 0 48 48"
-      className="w-9 h-9"
+      className="w-8 h-8"
     >
       <path fill="#039be5" d="M24 5a19 19 0 100 38 19 19 0 100-38z"></path>
       <path
