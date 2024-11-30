@@ -17,5 +17,5 @@ export const Recomendation = () => {
     };
     fetchdData();
   }, []);
-  return <CardProducts data={dataRec} title="Promo again🫡" />;
+  return <CardProducts data={dataRec} title="Special Promotion" />;
 };
