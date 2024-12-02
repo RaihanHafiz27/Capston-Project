@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Carousel from "../components/fragments/Carousel/Carousel";
 import { useSelector, useDispatch } from "react-redux";
 import { CardProducts } from "../components/fragments/Card/CardProducts";
-import { Recomendation } from "../components/fragments/Section/Promotion";
+import { Promotion } from "../components/fragments/Section/Promotion";
 import { CardCategory } from "../components/fragments/Card/CardCategory";
 import { TableTopUp } from "../components/fragments/TableTopUp";
 import { CardProducts2 } from "../components/fragments/Card/CardProducts2";
@@ -10,6 +10,9 @@ import { fetchProducts } from "../store/actions/productsActions";
 import { Footer } from "../components/fragments/Footer/Footer";
 import { AddCart } from "../components/fragments/Modals/AddCart";
 import { useNavigate } from "react-router-dom";
+import { TvRecomendation } from "../components/fragments/Section/TvRecomendation";
+import { Button } from "../components/elements/Button/Primary/Button";
+import { Browse } from "../components/fragments/Card/Browse";
 
 export const ProductsPage = () => {
   const navigate = useNavigate();
@@ -42,14 +45,14 @@ export const ProductsPage = () => {
   console.log(selectProduct);
 
   return (
-    <section className="flex min-h-screen border-2 border-pink-600 bg-slate-200">
+    <section className="flex min-h-screen bg-white border-2 border-pink-600">
       <div className="flex flex-col items-center justify-center flex-1 border-2 border-black">
-        <div className="w-3/5 pt-16 my-2 border-2 border-orange-500 2xl:pt-28 lg:my-4">
+        <div className="pt-24 my-2 border-2 border-orange-500 lg:w-4/5 2xl:w-3/5 2xl:pt-28 lg:my-4">
           <Carousel />
         </div>
         {/* test */}
         <div
-          className="w-full h-auto p-2 bg-white md:mx-auto md:rounded-xl lg:w-11/12 2xl:w-3/5"
+          className="w-full h-auto p-2 bg-white border border-gray-200 md:mx-auto md:rounded-xl lg:w-4/5 2xl:w-3/5"
           style={{
             boxShadow: "2px 2px 4px rgba(0,0,0,0.5)",
           }}
@@ -70,15 +73,43 @@ export const ProductsPage = () => {
           </div>
         </div>
         {/* test */}
-        <div className="w-3/5 my-10 border-2 border-orange-500 lg:p-2">
-          <div className="space-y-4">
-            <Recomendation />
+        <div className="border-2 border-orange-500 lg:w-4/5 2xl:w-3/5 2xl:p-2">
+          {/* <Browse /> */}
+
+          <Promotion />
+          <div className="space-y-4 ">
+            <p>test</p>
+            <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>
+            {/* <TvRecomendation /> */}
+            <div className="w-full bg-gray-900 border-2 border-pink-600 h-96">
+              <div className="flex items-center justify-center w-full h-full p-2 border border-white text-slate-200">
+                <div className="w-1/2 h-full p-4 space-y-6 border border-blue-500 font-Poppins">
+                  <p className="font-semibold text-amber-500">Categoris</p>
+                  <h2 className="text-5xl font-bold ">
+                    Enhance Your Music Experience
+                  </h2>
+                  <p className="text-lg">
+                    JBL headphones deliver superior sound quality, comfort, and
+                    style for your everyday music experience.
+                  </p>
+                  <button className="w-2/5 py-2 bg-amber-500">Buy Now!</button>
+                </div>
+                <div className="w-1/2 h-full border border-yellow-400">
+                  <img
+                    src="/images/headphone.png"
+                    alt=""
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+              </div>
+            </div>
             <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>
             <CardProducts2
               data={dataProducts}
               title={"New Products"}
               openModal={modalOpen}
             />
+            <Browse />
           </div>
         </div>
         <Footer />
@@ -87,3 +118,36 @@ export const ProductsPage = () => {
     </section>
   );
 };
+
+{
+  /* <div className="w-2/5 h-64 border-2 border-yellow-400">
+                  <img
+                    src="/images/img-1.jpg"
+                    alt=""
+                    className="object-cover object-right-top w-full h-full "
+                  />
+                </div>
+                <div className="flex justify-end w-3/5 h-64 border-2 border-red-400">
+                  <div className="w-full pl-4 border border-green-500">
+                    <img
+                      src="/images/img-4.jpg"
+                      alt=""
+                      className="object-cover object-left-top w-full h-full"
+                    />
+                  </div>
+                </div>
+                <div className="w-3/5 h-64 pr-4 border-2 border-red-400">
+                  <img
+                    src="/images/img-3.jpg"
+                    alt=""
+                    className="object-cover object-top w-full h-full "
+                  />
+                </div>
+                <div className="w-2/5 h-64 border-2 border-red-400">
+                  <img
+                    src="/images/img-2.jpg"
+                    alt=""
+                    className="object-cover object-left-top w-full h-full "
+                  />
+                </div> */
+}

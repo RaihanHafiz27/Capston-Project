@@ -11,13 +11,13 @@ export const CardProducts2 = (props) => {
       <h1 className="mb-2 text-2xl font-semibold font-Poppins text-amber-600">
         {title}
       </h1>
-      <ul className="grid grid-cols-5 gap-4">
+      <ul className="grid grid-cols-4 gap-4 lg:grid-cols-5">
         {data.map((item, id) => (
           <li
             key={id}
-            className="p-4 transition-all duration-300 bg-white rounded-lg font-Poppins hover:-translate-x-2 hover:-translate-y-2"
+            className="max-w-xs p-4 transition-all duration-300 bg-white border border-gray-200 rounded-lg font-Poppins hover:-translate-x-2 hover:-translate-y-2"
             style={{
-              boxShadow: "1px 1px 4px rgba(0,0,0,0.2)",
+              boxShadow: "2px 2px 4px rgba(0,0,0,0.2)",
             }}
           >
             <div className="w-full h-32 ">
@@ -31,12 +31,12 @@ export const CardProducts2 = (props) => {
               <p className="text-sm font-semibold">
                 {item.title.substring(0, 18)}...
               </p>
-              <p className="text-sm lowercase">
+              {/* <p>⭐⭐⭐⭐⭐</p> */}
+              {/* <p className="text-sm lowercase">
                 {item.description.substring(0, 47)}...
-              </p>
+              </p> */}
               <div className="flex justify-between my-1 text-sm">
                 <p className="text-sm ">Quantity : {item.quantity}</p>
-
                 <p className="text-gray-600">
                   {item.rating.rate} | {item.rating.count} sold
                 </p>

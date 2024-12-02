@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { CardProducts } from "../Card/CardProducts";
 
-export const Recomendation = () => {
+export const Promotion = () => {
   const [dataRec, setDataRec] = useState([]);
   useEffect(() => {
     const fetchdData = async () => {
       try {
         const resposne = await fetch(
-          "https://fakestoreapi.in/api/products?limit=13"
+          "https://fakestoreapi.in/api/products?limit=12"
         );
         const data = await resposne.json();
         setDataRec(data.products);
@@ -17,5 +17,11 @@ export const Recomendation = () => {
     };
     fetchdData();
   }, []);
-  return <CardProducts data={dataRec} title="Special Promotion" />;
+  return (
+    <CardProducts
+      data={dataRec}
+      title="Special Promotion"
+      filterCondition={(item) => item.discount > 0}
+    />
+  );
 };

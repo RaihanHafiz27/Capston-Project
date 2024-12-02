@@ -5,6 +5,7 @@ export default {
     fontFamily: {
       Poppins: ["Poppins", "sans-serif"],
       Roboto: ["Roboto", "sans-serif"],
+      BebasNeue: ["BebasNeue", "sans-serif"],
     },
     extend: {
       keyframes: {
@@ -20,5 +21,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

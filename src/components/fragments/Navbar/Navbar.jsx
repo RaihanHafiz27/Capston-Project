@@ -99,7 +99,7 @@ export const Navbar = () => {
       <div
         className={`flex items-center justify-between w-full py-2 px-4 lg:rounded-full ${
           isHome ? "bg-transparent lg:bg-gray-900" : "bg-amber-500 "
-        } lg:w-3/5 lg:py-4 lg:px-6 2xl:px-8`}
+        } lg:w-4/5 2xl:w-3/5 lg:py-4 lg:px-6 2xl:px-8`}
       >
         <div className="flex justify-between w-full lg:w-auto">
           <NavbarTitle classname={`w-auto ${titleColor}`} />

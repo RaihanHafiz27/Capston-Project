@@ -33,7 +33,7 @@ export const TableTopUp = () => {
   };
 
   return (
-    <div className="hidden w-full mx-auto lg:flex-col lg:flex lg:w-1/2">
+    <div className="hidden w-full mx-auto lg:flex-col lg:flex lg:w-1/2 ">
       <p className="my-2 text-sm tracking-wide text-center text-gray-600 font-Roboto">
         Please top up here which is safe, easy, and reliable.
       </p>
