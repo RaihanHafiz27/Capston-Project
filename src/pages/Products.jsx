@@ -41,13 +41,13 @@ export const ProductsPage = () => {
     setIsOpen(!isOpen);
   };
 
-  console.log(isOpen);
-  console.log(selectProduct);
+  // console.log(isOpen);
+  // console.log(selectProduct);
 
   return (
-    <section className="flex min-h-screen bg-white border-2 border-pink-600">
+    <section className="flex min-h-screen border-2 border-pink-600 bg-slate-200">
       <div className="flex flex-col items-center justify-center flex-1 border-2 border-black">
-        <div className="pt-24 my-2 border-2 border-orange-500 lg:w-4/5 2xl:w-3/5 2xl:pt-28 lg:my-4">
+        <div className="w-full pt-12 border-orange-500 my-2border-2 lg:pt-20 lg:w-4/5 2xl:w-3/5 2xl:pt-28 lg:my-4">
           <Carousel />
         </div>
         {/* test */}
@@ -73,28 +73,27 @@ export const ProductsPage = () => {
           </div>
         </div>
         {/* test */}
-        <div className="border-2 border-orange-500 lg:w-4/5 2xl:w-3/5 2xl:p-2">
+        <div className="w-full my-8 border-2 border-orange-500 lg:w-4/5 2xl:w-3/5 2xl:p-2">
           {/* <Browse /> */}
 
-          <Promotion />
           <div className="space-y-4 ">
-            <p>test</p>
-            <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>
+            <Promotion />
             {/* <TvRecomendation /> */}
-            <div className="w-full bg-gray-900 border-2 border-pink-600 h-96">
-              <div className="flex items-center justify-center w-full h-full p-2 border border-white text-slate-200">
-                <div className="w-1/2 h-full p-4 space-y-6 border border-blue-500 font-Poppins">
+            <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>
+            <div className="w-full h-auto p-6 bg-gray-900 border-2 border-pink-600 lg:p-0 lg:h-96">
+              <div className="flex flex-col-reverse items-center justify-center w-full h-full p-2 border border-white lg:flex-row text-slate-200">
+                <div className="w-11/12 h-full p-4 space-y-6 border border-blue-500 lg:w-1/2 font-Poppins">
                   <p className="font-semibold text-amber-500">Categoris</p>
-                  <h2 className="text-5xl font-bold ">
+                  <h2 className="text-2xl font-bold lg:text-5xl ">
                     Enhance Your Music Experience
                   </h2>
-                  <p className="text-lg">
+                  <p className="text-base lg:text-lg">
                     JBL headphones deliver superior sound quality, comfort, and
                     style for your everyday music experience.
                   </p>
                   <button className="w-2/5 py-2 bg-amber-500">Buy Now!</button>
                 </div>
-                <div className="w-1/2 h-full border border-yellow-400">
+                <div className="w-11/12 h-full border border-yellow-400 lg:w-1/2">
                   <img
                     src="/images/headphone.png"
                     alt=""

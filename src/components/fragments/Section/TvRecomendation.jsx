@@ -8,7 +8,7 @@ export const TvRecomendation = () => {
     const fetchdData = async () => {
       try {
         const res = await fetch(
-          "https://fakestoreapi.in/api/products/category?type=tv&limit=9"
+          "https://fakestoreapi.in/api/products/category?type=tv&limit=8"
         );
         const data = await res.json();
         console.log(data);
@@ -19,11 +19,5 @@ export const TvRecomendation = () => {
     };
     fetchdData();
   }, []);
-  return (
-    <CardProducts
-      data={dataTv}
-      title={"TV"}
-      filterCondition={(item) => item.discount > 0}
-    />
-  );
+  return <CardProducts data={dataTv} title={"Best on Television"} />;
 };

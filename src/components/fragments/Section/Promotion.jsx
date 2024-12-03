@@ -6,10 +6,10 @@ export const Promotion = () => {
   useEffect(() => {
     const fetchdData = async () => {
       try {
-        const resposne = await fetch(
+        const response = await fetch(
           "https://fakestoreapi.in/api/products?limit=12"
         );
-        const data = await resposne.json();
+        const data = await response.json();
         setDataRec(data.products);
       } catch (error) {
         console.log(error);
@@ -17,11 +17,5 @@ export const Promotion = () => {
     };
     fetchdData();
   }, []);
-  return (
-    <CardProducts
-      data={dataRec}
-      title="Special Promotion"
-      filterCondition={(item) => item.discount > 0}
-    />
-  );
+  return <CardProducts data={dataRec} title="Special Promotion" />;
 };

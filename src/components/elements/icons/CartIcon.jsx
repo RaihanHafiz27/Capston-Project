@@ -5,7 +5,7 @@ export const CartIcon = () => {
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
-      className="size-6"
+      className="size-5"
       viewBox="0 0 24 24"
     >
       <path

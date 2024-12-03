@@ -8,6 +8,9 @@ export default {
       BebasNeue: ["BebasNeue", "sans-serif"],
     },
     extend: {
+      colors: {
+        primary: "#DB4444",
+      },
       keyframes: {
         slide: {
           "0%": { transform: "translateX(0)", opacity: "1" },

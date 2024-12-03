@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 export const CardProducts = (props) => {
-  const { data, title, filterCondition } = props;
+  const { data, title } = props;
 
   const sliderRef = useRef(null);
 
@@ -18,7 +18,7 @@ export const CardProducts = (props) => {
   return (
     <section className="relative w-full h-auto overflow-hidden border-2 border-black">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold font-Poppins text-amber-600">
+        <h1 className="text-lg font-semibold uppercase lg:text-2xl font-Poppins text-amber-600">
           {title}
         </h1>
         <div className="space-x-2">
@@ -62,20 +62,20 @@ export const CardProducts = (props) => {
           </button>
         </div>
       </div>
-      <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400 mt-2 mb-4 "></hr>
+      <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400 my-2 "></hr>
       <ul
         ref={sliderRef}
-        className="flex w-full space-x-4 overflow-hidden overflow-x-auto scrollbar-none"
+        className="flex w-full gap-2 py-2 overflow-hidden overflow-x-auto lg:gap-4 scrollbar-none"
       >
         {filteredData.map((item) => (
           <li
             key={item.id}
-            className="flex-grow-0 flex-shrink-0 max-w-[176px] max-h-[300px] p-2 bg-white relative border border-gray-200 rounded-lg"
+            className="flex-grow-0 flex-shrink-0 max-w-[176px] max-h-[300px] p-2 bg-white relative border border-gray-200 rounded-lg transition-all duration-300 hover:-translate-x-2 hover:-translate-y-2"
             style={{
-              boxShadow: "1px 1px 4px rgba(0,0,0,0.2)",
+              boxShadow: "2px 2px 4px rgba(0,0,0,0.2)",
             }}
           >
-            <div className="flex flex-col items-center justify-center h-[120px] ">
+            <div className="flex flex-col items-center justify-center  h-[120px] ">
               <img src={item.image} alt="img" className="w-full h-full " />
             </div>
             <p className="text-sm font-medium line-clamp-2">{item.title}</p>
@@ -88,7 +88,7 @@ export const CardProducts = (props) => {
                 ${(item.price * (1 - item.discount / 100)).toFixed(2)}
               </p>
             </div>
-            <span className="absolute top-0 left-0 px-3 py-1 text-sm font-semibold rounded-tl-md rounded-br-md bg-amber-500">
+            <span className="absolute top-0 left-0 px-3 py-1 text-sm font-semibold rounded-tl-md rounded-br-md bg-amber-500 text-slate-200">
               -{item.discount}%
             </span>
           </li>

@@ -2,6 +2,7 @@ const initialsState = {
   dataProducts: [],
   isloading: false,
   error: null,
+  cartItem: [],
 };
 
 export const productsReducer = (state = initialsState, action) => {
@@ -12,6 +13,33 @@ export const productsReducer = (state = initialsState, action) => {
       return { ...state, loading: false, dataProducts: action.payload };
     case "FETCH_PRODUCTS_FAILURE":
       return { ...state, loading: false, error: action.payload };
+    case "REDUCE_QUANTITY":
+      return {
+        ...state,
+        dataProducts: state.dataProducts.map((product) =>
+          product.id === action.payload.id
+            ? { ...product, quantity: product.quantity - action.payload.amount }
+            : product
+        ),
+      };
+    case "ADD_TO_CART":
+      const existingItem = state.cartItem.find(
+        (item) => item.id === action.payload.id
+      );
+      if (existingItem) {
+        return {
+          ...state,
+          cartItem: state.cartItem.map((item) =>
+            item.id === action.payload.id
+              ? { ...item, quantity: item.quantity + action.payload.quantity }
+              : item
+          ),
+        };
+      }
+      return {
+        ...state,
+        cartItem: [...state.cartItem, action.payload],
+      };
     default:
       return state;
   }

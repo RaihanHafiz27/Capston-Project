@@ -9,7 +9,7 @@ export const fetchProducts = () => async (dispatch) => {
       quantity: 20,
     }));
 
-    console.log(data);
+    // console.log(data);
 
     dispatch({ type: "FETCH_PRODUCTS_SUCCESS", payload: data });
   } catch (error) {

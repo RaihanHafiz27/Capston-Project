@@ -26,7 +26,7 @@ const Carousel = ({ interval = 3000 }) => {
   };
 
   return (
-    <div className="relative w-full h-40 mx-auto overflow-hidden lg:h-64 2xl:h-80 lg:rounded-xl">
+    <div className="relative w-full h-40 mx-auto overflow-hidden lg:h-64 2xl:h-80 lg:rounded-lg">
       <div
         className="flex w-full h-full transition-transform duration-500 transform"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

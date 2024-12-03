@@ -3,7 +3,7 @@ import { Button } from "../components/elements/Button/Primary/Button";
 import { RightDoubleArrow } from "../components/elements/icons/RighDoubleArrow";
 import { Link } from "react-router-dom";
 import TypewriterComponent from "typewriter-effect";
-import CustomCursor from "../components/elements/Cursor/CustomCursor";
+
 import Aos from "aos";
 import "aos/dist/aos.css";
 
@@ -21,7 +21,7 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center h-screen bg-center bg-cover border-2 border-pink-500">
+    <section className="relative flex items-center justify-center h-screen bg-center bg-cover ">
       <video
         ref={videoRef}
         autoPlay
@@ -31,12 +31,12 @@ export const HomePage = () => {
         src="/video/jam.webm"
         className="absolute inset-0 object-cover w-full h-full -z-10"
       ></video>
-      <CustomCursor />
-      <div className="z-10 w-11/12 border-2 border-pink-600 lg:w-4/5">
-        <div className="w-full border-2 border-white lg:w-1/2 2xl:w-2/5">
+
+      <div className="z-10 w-11/12 lg:w-4/5">
+        <div className="w-full lg:w-1/2 2xl:w-2/5">
           <div className="flex flex-col items-center justify-center text-lg font-semibold lg:items-start lg:text-2xl 2xl:text-3xl font-Poppins text-slate-200">
             <h1
-              className="text-3xl lg:text-5xl text-amber-500 2xl:text-6xl"
+              className="mb-2 text-3xl lg:text-5xl text-rose-600 2xl:text-6xl"
               data-aos="fade-down"
               data-aos-duration="1500"
               data-aos-delay="500"
@@ -65,17 +65,20 @@ export const HomePage = () => {
             data-aos-delay="1200"
             data-aos-duration="1500"
           >
-            Discover the epitome of luxury, elegance, and sophistication.
+            Discover the epitome of luxury, elegance and sophistication. Explore
+            our collection of premium products designed just for you. Shop with
+            ease, your lifestyle with our exclusive e-commerce platform.
+            {/* Discover the epitome of luxury, elegance, and sophistication.
             Explore our collection of premium products designed just for you.
             Shop with ease, enjoy seamless transactions, and elevate your
-            lifestyle with our exclusive e-commerce platform.
+            lifestyle with our exclusive e-commerce platform. */}
           </p>
           <Link
             data-aos="zoom-in-up"
             data-aos-duration="1500"
             data-aos-delay="1500"
             to={"/products"}
-            className="flex items-center justify-center w-2/5 py-2 mx-auto mt-8 text-sm text-white rounded lg:text-base bg-amber-500 lg:mx-0 lg:mt-6 2xl:mt-10 lg:w-2/6 2xl:w-1/4 font-Roboto"
+            className="flex items-center justify-center w-2/5 py-2 mx-auto mt-8 text-sm text-white rounded lg:text-base bg-rose-600 lg:mx-0 lg:mt-6 2xl:mt-10 lg:w-2/6 2xl:w-1/4 font-Roboto"
           >
             Shop Now <RightDoubleArrow />
           </Link>

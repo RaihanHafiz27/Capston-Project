@@ -95,14 +95,24 @@ export const Navbar = () => {
   const titleColor = isHome ? "text-white" : "text-white";
 
   return (
-    <nav className="fixed z-50 flex items-center justify-center w-full border-2 border-white lg:py-6 2xl:py-8">
+    <nav
+      className={`fixed z-50 flex items-center justify-center w-full  lg:py-2 ${
+        isHome ? "bg-transparent" : "bg-rose-600 border-b-2 border-gray-200"
+      }`}
+    >
       <div
-        className={`flex items-center justify-between w-full py-2 px-4 lg:rounded-full ${
-          isHome ? "bg-transparent lg:bg-gray-900" : "bg-amber-500 "
-        } lg:w-4/5 2xl:w-3/5 lg:py-4 lg:px-6 2xl:px-8`}
+        className={`flex items-center justify-between w-full py-2 bg-transparent   lg:w-4/5 2xl:w-3/5 `}
       >
-        <div className="flex justify-between w-full lg:w-auto">
-          <NavbarTitle classname={`w-auto ${titleColor}`} />
+        <div className="flex items-center justify-between w-full lg:w-auto">
+          <div className="w-44 text-slate-200">
+            <img
+              src="/images/luxura-logo.png"
+              alt=""
+              className="w-full h-auto"
+            />
+          </div>
+
+          {/* <NavbarTitle classname={`w-auto ${titleColor}`} /> */}
           {/* hamburger for mobile screen */}
           <div className="lg:hidden">
             <HamburgerBtn onClick={() => setIsOpen(!isOpen)} isOpen={isOpen} />
@@ -162,7 +172,7 @@ const LinksLargeScreen = (props) => {
         >
           <Link
             to={item.to}
-            className={`flex items-center text-xs 2xl:text-sm font-Poppins font-semibold leading-snug tracking-wide uppercase  ${textColor}`}
+            className={`flex items-center text-xs lg:text-sm font-Poppins font-semibold leading-snug tracking-wider uppercase  ${textColor}`}
           >
             {item.title}
             {item.title === "Services" && (
