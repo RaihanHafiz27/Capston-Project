@@ -18,10 +18,11 @@ export const ProductsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { dataProducts } = useSelector((state) => state.dataProducts);
+  const isDarkMode = useSelector((state) => state.dataProducts.isDarkMode);
   const [isOpen, setIsOpen] = useState(false);
   const [selectProduct, setSelectProduct] = useState(null);
 
-  // console.log(dataProducts);
+  console.log(isDarkMode);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -45,7 +46,11 @@ export const ProductsPage = () => {
   // console.log(selectProduct);
 
   return (
-    <section className="flex min-h-screen border-2 border-pink-600 bg-slate-200">
+    <section
+      className={`flex min-h-screen  border-2 border-pink-600 ${
+        isDarkMode ? "bg-gray-900" : "bg-white"
+      }`}
+    >
       <div className="flex flex-col items-center justify-center flex-1 border-2 border-black">
         <div className="w-full pt-12 border-orange-500 my-2border-2 lg:pt-20 lg:w-4/5 2xl:w-3/5 2xl:pt-28 lg:my-4">
           <Carousel />
@@ -57,11 +62,11 @@ export const ProductsPage = () => {
             boxShadow: "2px 2px 4px rgba(0,0,0,0.5)",
           }}
         >
-          <div className="flex justify-around py-2 border-b border-gray-400 font-Roboto">
-            <h2 className="text-sm font-semibold lg:text-xl">
+          <div className="flex justify-around py-2 border-b border-gray-400 font-Poppins">
+            <h2 className="text-sm font-semibold lg:text-lg 2xl:text-xl">
               Preferred Category
             </h2>
-            <h2 className="hidden text-sm font-semibold lg:block lg:text-xl">
+            <h2 className="hidden text-sm font-semibold lg:block lg:text-lg 2xl:text-xl">
               Top up
             </h2>
           </div>
@@ -69,7 +74,7 @@ export const ProductsPage = () => {
             <div className="flex w-full lg:w-1/2">
               <CardCategory />
             </div>
-            <TableTopUp /> {/* Mengirim prop handlePurchase */}
+            <TableTopUp />
           </div>
         </div>
         {/* test */}
@@ -78,30 +83,9 @@ export const ProductsPage = () => {
 
           <div className="space-y-4 ">
             <Promotion />
-            {/* <TvRecomendation /> */}
+            <TvRecomendation />
             <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>
-            <div className="w-full h-auto p-6 bg-gray-900 border-2 border-pink-600 lg:p-0 lg:h-96">
-              <div className="flex flex-col-reverse items-center justify-center w-full h-full p-2 border border-white lg:flex-row text-slate-200">
-                <div className="w-11/12 h-full p-4 space-y-6 border border-blue-500 lg:w-1/2 font-Poppins">
-                  <p className="font-semibold text-amber-500">Categoris</p>
-                  <h2 className="text-2xl font-bold lg:text-5xl ">
-                    Enhance Your Music Experience
-                  </h2>
-                  <p className="text-base lg:text-lg">
-                    JBL headphones deliver superior sound quality, comfort, and
-                    style for your everyday music experience.
-                  </p>
-                  <button className="w-2/5 py-2 bg-amber-500">Buy Now!</button>
-                </div>
-                <div className="w-11/12 h-full border border-yellow-400 lg:w-1/2">
-                  <img
-                    src="/images/headphone.png"
-                    alt=""
-                    className="object-contain w-full h-full"
-                  />
-                </div>
-              </div>
-            </div>
+            <Highlight />
             <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>
             <CardProducts2
               data={dataProducts}
@@ -118,35 +102,29 @@ export const ProductsPage = () => {
   );
 };
 
-{
-  /* <div className="w-2/5 h-64 border-2 border-yellow-400">
-                  <img
-                    src="/images/img-1.jpg"
-                    alt=""
-                    className="object-cover object-right-top w-full h-full "
-                  />
-                </div>
-                <div className="flex justify-end w-3/5 h-64 border-2 border-red-400">
-                  <div className="w-full pl-4 border border-green-500">
-                    <img
-                      src="/images/img-4.jpg"
-                      alt=""
-                      className="object-cover object-left-top w-full h-full"
-                    />
-                  </div>
-                </div>
-                <div className="w-3/5 h-64 pr-4 border-2 border-red-400">
-                  <img
-                    src="/images/img-3.jpg"
-                    alt=""
-                    className="object-cover object-top w-full h-full "
-                  />
-                </div>
-                <div className="w-2/5 h-64 border-2 border-red-400">
-                  <img
-                    src="/images/img-2.jpg"
-                    alt=""
-                    className="object-cover object-left-top w-full h-full "
-                  />
-                </div> */
-}
+const Highlight = () => {
+  return (
+    <div className="w-full h-auto p-6 bg-gray-900 border-2 border-pink-600 lg:p-0 lg:h-96">
+      <div className="flex flex-col-reverse items-center justify-center w-full h-full p-2 border border-white lg:flex-row text-slate-200">
+        <div className="w-11/12 h-full p-4 space-y-6 border border-blue-500 lg:w-1/2 font-Poppins">
+          <p className="font-semibold text-rose-600">Categoris</p>
+          <h2 className="text-2xl font-bold lg:text-5xl ">
+            Enhance Your Music Experience
+          </h2>
+          <p className="text-base lg:text-lg">
+            JBL headphones deliver superior sound quality, comfort, and style
+            for your everyday music experience.
+          </p>
+          <button className="w-2/5 py-2 bg-rose-600">Buy Now!</button>
+        </div>
+        <div className="w-11/12 h-full border border-yellow-400 lg:w-1/2">
+          <img
+            src="/images/headphone.png"
+            alt=""
+            className="object-contain w-full h-full"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};

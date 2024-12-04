@@ -16,7 +16,7 @@ export const Cart = (props) => {
     >
       <CartIcon />
       {cartItem.length > 0 && (
-        <span className="absolute px-1 text-xs text-white bg-red-500 rounded-full -left-2 -top-1">
+        <span className="absolute px-1 text-xs bg-white rounded-full text-rose-600 -left-2 -top-1">
           {cartItem.length}
         </span>
       )}

@@ -3,6 +3,7 @@ const initialsState = {
   isloading: false,
   error: null,
   cartItem: [],
+  isDarkMode: false,
 };
 
 export const productsReducer = (state = initialsState, action) => {
@@ -40,6 +41,8 @@ export const productsReducer = (state = initialsState, action) => {
         ...state,
         cartItem: [...state.cartItem, action.payload],
       };
+    case "DARK_MODE":
+      return { ...state, isDarkMode: !state.isDarkMode };
     default:
       return state;
   }

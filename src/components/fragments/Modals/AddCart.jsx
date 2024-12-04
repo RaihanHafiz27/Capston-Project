@@ -26,7 +26,7 @@ export const AddCart = (props) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
         <div className="relative max-w-xs mx-auto">
           {/* Content Modal */}
-          <div className="relative flex flex-col items-center justify-center p-10 transition-transform duration-500 ease-in-out delay-300 bg-white shadow-xl rounded-xl">
+          <div className="relative flex flex-col items-center justify-center px-10 py-4 transition-transform duration-500 ease-in-out delay-300 bg-white shadow-xl rounded-xl">
             <div className="w-full">
               <img
                 src={product.image}
@@ -38,7 +38,25 @@ export const AddCart = (props) => {
             <p className="my-2 text-sm text-center text-gray-700 font-Poppins">
               {product.title}
             </p>
-            <div className="flex items-center justify-center w-4/5 my-2">
+            <div className="flex items-center justify-center w-4/5 my-2 space-x-2">
+              <button
+                className="flex items-center justify-center w-10 h-10 font-bold text-white transition bg-gray-800 rounded-l hover:bg-gray-700 focus:ring-2 focus:ring-gray-500"
+                onClick={() => setQuantity(quantity - 1)}
+              >
+                −
+              </button>
+              <p className="flex items-center justify-center w-16 h-10 font-medium text-gray-800 bg-white border border-gray-800">
+                {quantity}
+              </p>
+              <button
+                className="flex items-center justify-center w-10 h-10 font-bold text-white transition bg-gray-800 rounded-r hover:bg-gray-700 focus:ring-2 focus:ring-gray-500"
+                onClick={() => setQuantity(quantity + 1)}
+              >
+                +
+              </button>
+            </div>
+
+            {/* <div className="flex items-center justify-center w-4/5 my-2">
               <button
                 className="w-1/3 border border-r-0 border-gray-800"
                 onClick={() => setQuantity(quantity - 1)}
@@ -54,9 +72,9 @@ export const AddCart = (props) => {
               >
                 +
               </button>
-            </div>
+            </div> */}
             <button
-              className="w-full py-2 bg-amber-500"
+              className="w-full py-2 bg-rose-600 hover:bg-rose-700 text-slate-200"
               onClick={() => handleConfirm()}
             >
               Confirm
@@ -74,47 +92,3 @@ export const AddCart = (props) => {
     </>
   );
 };
-
-// import { useState, useEffect } from "react";
-
-// export const AddCart = (props) => {
-//   const { modalClose, product } = props;
-//   const [isVisible, setIsVisible] = useState(false);
-//   const [qty, setQty] = useState(0);
-
-//   useEffect(() => {
-//     setTimeout(() => setIsVisible(true), 50); // Memulai animasi setelah modal dirender
-//   }, []);
-
-//   // const Add = () => {
-//   //   qty + 1
-//   // }
-
-//   return (
-//     <>
-//       <div className="fixed inset-0 z-40 bg-black opacity-50"></div>
-//       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-//         <div
-//           className={`relative w-1/4 max-w-xs mx-auto transition-transform duration-500 ease-in-out ${
-//             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-//           }`}
-//         >
-//           {/* Content Modal */}
-//           <div className="relative flex flex-col items-center justify-center p-6 bg-white shadow-xl rounded-xl">
-//             <img src={product.image} alt="" className="w-1/2 h-auto" />
-//             <p>{product.title}</p>
-//             <button
-//               onClick={() => {
-//                 setIsVisible(false); // Animasi keluar
-//                 setTimeout(() => modalClose(), 500); // Tutup modal setelah animasi selesai
-//               }}
-//               className="absolute text-2xl text-white -right-2 -top-7"
-//             >
-//               x
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };

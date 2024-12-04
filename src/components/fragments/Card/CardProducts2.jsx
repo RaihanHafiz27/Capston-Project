@@ -12,7 +12,7 @@ export const CardProducts2 = (props) => {
 
   return (
     <section className="p-2 border-2 border-black lg:p-0">
-      <h1 className="mb-2 text-2xl font-semibold font-Poppins text-amber-600">
+      <h1 className="mb-2 text-2xl font-semibold text-gray-700 dark:text-slate-200 font-Poppins">
         {title}
       </h1>
       <ul className="grid grid-cols-2 gap-4 lg:grid-cols-5">
@@ -28,10 +28,6 @@ export const CardProducts2 = (props) => {
               <div className="w-4/5 mx-auto h-28">
                 <img src={item.image} alt="" className="w-full h-full" />
               </div>
-              {/* <div className="flex flex-col items-center justify-center w-1/2 border border-black h-2/5">
-          <img src={item.image} alt="img" className="w-full h-full" />
-        </div> */}
-
               <p className="text-sm font-medium line-clamp-1">{item.title}</p>
               <div className="flex my-1 text-sm">
                 <p className="">{getStars(item.rating.rate)}</p>
@@ -44,16 +40,16 @@ export const CardProducts2 = (props) => {
                 <p className="text-sm ">Qty : {item.quantity}</p>
               </div>
             </Link>
-
-            <div className="flex items-end justify-between flex-1 border border-black">
+            <div className="flex items-end justify-between flex-1 mt-2">
               <button
                 onClick={() => openModal(item)}
-                className="relative w-full py-2 overflow-hidden text-sm transition-transform duration-500 border rounded-lg group border-amber-500"
+                className="w-full py-2 text-sm rounded-md bg-rose-600 hover:bg-rose-700 text-slate-200"
               >
-                <span className="absolute top-0 left-0 w-0 h-full transition-all duration-500 bg-amber-500 group-hover:w-full"></span>
+                add cart
+                {/* <span className="absolute top-0 left-0 w-0 h-full transition-all duration-500 bg-amber-500 group-hover:w-full"></span>
                 <span className="relative z-10 delay-150 group-hover:text-slate-200">
                   add cart
-                </span>
+                </span> */}
               </button>
             </div>
             {/* gunakan untuk di details page */}

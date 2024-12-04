@@ -1,5 +1,5 @@
 import { FormLogin } from "../components/fragments/Form/FormLogin";
-import { NavbarTitle } from "../components/fragments/Navbar/NavbarTitle";
+
 import { AuthLayout } from "../components/layouts/AuthLayout";
 
 export const LoginPage = () => {

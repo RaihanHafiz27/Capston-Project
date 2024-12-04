@@ -1,11 +1,11 @@
 export const Browse = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-auto py-6 text-gray-800 bg-gray-200 border-2 border-pink-600 font-BebasNeue">
-      <h2 className="mb-4 text-3xl font-bold tracking-widest uppercase border lg:text-5xl">
+    <div className="flex flex-col items-center justify-center w-full h-auto py-10 border-2 border-pink-600 font-BebasNeue">
+      <h2 className="mb-4 text-3xl font-bold tracking-widest text-gray-800 uppercase border lg:text-5xl dark:text-slate-200">
         Browse By Dress Style
       </h2>
-      <div className="flex flex-wrap justify-between flex-1 w-11/12 border-2 border-black">
-        <div className="flex flex-col w-full border-2 border-red-500 lg:flex-row">
+      <div className="flex flex-wrap justify-between flex-1 w-full ">
+        <div className="flex flex-col w-full lg:flex-row">
           <CardBrowse1
             image={"/images/img-1.jpg"}
             title={"Party"}
@@ -17,7 +17,7 @@ export const Browse = () => {
             description={"Simple and comfortable outfits for everyday wear."}
           />
         </div>
-        <div className="flex flex-col w-full mt-4 border-2 border-green-500 lg:flex-row">
+        <div className="flex flex-col w-full mt-4 lg:flex-row">
           <CardBrowse2
             image={"/images/img-4.jpg"}
             title={"Formal"}
@@ -41,14 +41,19 @@ export const Browse = () => {
 const CardBrowse1 = (props) => {
   const { image, title, description, classname = "object-right-top" } = props;
   return (
-    <div className="relative w-full h-64 overflow-hidden border-2 border-yellow-400 rounded-lg lg:w-2/5 group">
+    <div
+      className="relative w-full h-64 overflow-hidden border border-gray-300 rounded-lg lg:w-2/5 group"
+      style={{
+        boxShadow: "4px 4px 6px rgba(0,0,0,0.7)",
+      }}
+    >
       <img
         src={image}
         alt=""
         className={`object-cover  w-full h-full transition-all duration-500 group-hover:brightness-75 ${classname}`}
       />
       <p
-        className={`absolute text-2xl font-semibold tracking-widest uppercase top-4 ${
+        className={`absolute text-2xl font-semibold tracking-widest uppercase text-gray-700 top-4 ${
           title === "Party" ? "left-4" : "right-4"
         }`}
       >
@@ -78,16 +83,21 @@ const CardBrowse2 = (props) => {
     <div
       className={`flex justify-end w-full lg:w-3/5 h-64 ${
         title === "Casual" ? "lg:pl-4" : "lg:pr-4"
-      } border-2 border-red-400 group`}
+      }  group`}
     >
-      <div className="relative w-full overflow-hidden">
+      <div
+        className="relative w-full overflow-hidden rounded-lg"
+        style={{
+          boxShadow: "4px 4px 6px rgba(0,0,0,0.7)",
+        }}
+      >
         <img
           src={image}
           alt=""
-          className="object-cover object-left-top w-full h-full transition-all duration-500 rounded-lg group-hover:brightness-75"
+          className="object-cover object-left-top w-full h-full transition-all duration-500 border border-gray-300 rounded-lg group-hover:brightness-75"
         />
         <p
-          className={`absolute text-2xl font-semibold tracking-widest uppercase ${
+          className={`absolute text-2xl font-semibold tracking-widest uppercase text-gray-700 ${
             title === "Casual" ? "left-4" : "right-4"
           } top-4`}
         >

@@ -35,7 +35,7 @@ export const FormLogin = () => {
         name="username"
         type="text"
         label="Username"
-        placeholder="Enter Your Username"
+        placeholder="username"
       />
       <div className="relative">
         <InputForm
@@ -45,6 +45,7 @@ export const FormLogin = () => {
           placeholder="**********"
         />
         <button
+          type="button"
           className="absolute right-0 top-3"
           onClick={() => setIsPasswordVisible(!isPasswordVisible)}
         >

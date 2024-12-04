@@ -2,25 +2,10 @@ import React, { useContext, useState } from "react";
 
 export const TableTopUp = () => {
   const [activeColumn, setActiveColumn] = useState("Credit");
-  // const { total, setTotal } = useContext(TotalTopUp);
 
   const handleColumnClick = (column) => {
     setActiveColumn(column);
   };
-
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setTotal({
-  //     ...total,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handlePurchaseClick = (event) => {
-  //   event.preventDefault();
-
-  //   handlePurchase(); // Memanggil handlePurchase dari props
-  // };
 
   const getPlaceholder = (column, field) => {
     const placeholders = {
@@ -37,7 +22,7 @@ export const TableTopUp = () => {
       <p className="my-2 text-sm tracking-wide text-center text-gray-600 font-Roboto">
         Please top up here which is safe, easy, and reliable.
       </p>
-      <div className="hidden w-full border lg:flex rounded-xl">
+      <div className="hidden w-full border border-gray-400 lg:flex rounded-xl">
         <table className="w-full m-2">
           <thead>
             <tr className="border-b">
@@ -46,8 +31,8 @@ export const TableTopUp = () => {
                   <th
                     key={column}
                     onClick={() => handleColumnClick(column)}
-                    className={`cursor-pointer font-Roboto text-sm ${
-                      activeColumn === column ? "active text-amber-500" : ""
+                    className={`cursor-pointer font-Poppins text-xs 2xl:text-sm ${
+                      activeColumn === column ? "active text-rose-600" : ""
                     }`}
                   >
                     {column}
@@ -63,7 +48,7 @@ export const TableTopUp = () => {
                   <div className="flex flex-col w-full">
                     <label
                       htmlFor="number"
-                      className="my-1 text-sm font-semibold text-gray-500"
+                      className="my-1 text-xs font-semibold text-gray-500 2xl:text-sm"
                     >
                       {activeColumn === "Credit" && "Number"}
                       {activeColumn === "Data Package" && "Number"}
@@ -75,9 +60,8 @@ export const TableTopUp = () => {
                       id="number"
                       name="notelp"
                       value=""
-                      // onChange={handleInputChange}
                       placeholder={getPlaceholder(activeColumn, "number")}
-                      className="w-full p-2 text-sm border border-gray-200 rounded outline-none"
+                      className="w-full p-2 text-xs border border-gray-400 rounded outline-none 2xl:text-sm"
                     />
                   </div>
                   <div className="flex flex-col w-full">
@@ -90,9 +74,7 @@ export const TableTopUp = () => {
                     <select
                       id="amount"
                       name="purchase"
-                      // value={total.purchase}
-                      // onChange={handleInputChange}
-                      className="w-full p-2 text-sm border border-gray-200 rounded outline-none"
+                      className="w-full p-2 text-sm border border-gray-400 rounded outline-none"
                     >
                       <option value="" disabled hidden>
                         Select Nominal
@@ -111,10 +93,7 @@ export const TableTopUp = () => {
                   </div>
                 </div>
                 <div className="flex items-center justify-center w-full">
-                  <button
-                    // onClick={handlePurchaseClick} // Menggunakan handlePurchaseClick untuk memanggil handlePurchase
-                    className="w-1/2 p-2 text-white bg-orange-400 rounded hover:bg-orange-500"
-                  >
+                  <button className="w-1/2 p-2 text-white rounded bg-rose-600 hover:bg-rose-800">
                     Buy Now
                   </button>
                 </div>

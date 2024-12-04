@@ -49,10 +49,10 @@ export const CardCategory = () => {
             <img
               src={item.image}
               alt=""
-              className="w-8 h-8 transition-all duration-300 scale-110 rounded-lg md:w-10 md:h-10 2xl:w-12 2xl:h-12 hover:scale-125"
+              className="w-8 h-8 transition-all duration-300 scale-110 rounded-lg 2xl:w-12 2xl:h-12 hover:scale-125"
             />
           </div>
-          <span className="text-sm">{item.title}</span>
+          <span className="text-xs 2xl:text-sm font-Poppins">{item.title}</span>
         </Link>
       ))}
     </div>

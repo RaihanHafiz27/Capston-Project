@@ -94,23 +94,19 @@ export const DetailsProducts = () => {
         </div>
 
         {/* Product Details */}
-        <div className="flex flex-col justify-between p-6 overflow-auto md:w-1/3">
+        <div className="flex flex-col justify-between p-6 overflow-auto md:w-1/3 font-Poppins">
           <div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-800">
+            <h2 className="mb-4 text-xl font-bold text-gray-800">
               {product.title}
             </h2>
-            <p className="mb-2 text-lg text-gray-600">
-              Category: {product.category}
-            </p>
-            <p className="mb-4 text-xl font-semibold text-green-600">
+            <p className="mb-2 text-gray-600">Category: {product.category}</p>
+            <p className="mb-2 text-xl font-semibold text-teal-600">
               ${product.price}
             </p>
-            <p className="text-sm leading-relaxed text-gray-700">
-              {product.description}
-            </p>
+            <p className="text-sm text-gray-700">{product.description}</p>
           </div>
           <div className="mt-6">
-            <button className="w-full px-4 py-2 text-white transition bg-blue-500 rounded-lg hover:bg-blue-600">
+            <button className="w-full px-4 py-2 text-white transition rounded-lg bg-rose-600 hover:bg-rose-700">
               Add to Cart
             </button>
           </div>
