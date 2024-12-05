@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { TvRecomendation } from "../components/fragments/Section/TvRecomendation";
 import { Button } from "../components/elements/Button/Primary/Button";
 import { Browse } from "../components/fragments/Card/Browse";
+import { Successful } from "../components/fragments/Modals/Successful";
 
 export const ProductsPage = () => {
   const navigate = useNavigate();

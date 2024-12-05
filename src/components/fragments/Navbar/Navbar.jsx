@@ -29,12 +29,12 @@ const navbarItems = [
   {
     title: "About Us",
     icon: <AboutIcon />,
-    to: "/products",
+    to: "/about",
   },
   {
     title: "Contact Us",
     icon: <ContactIcon />,
-    to: "/products",
+    to: "/contact-us",
   },
   {
     title: "Services",
@@ -46,19 +46,19 @@ const navbarItems = [
 const subLinksServices = [
   {
     title: "Faq",
-    to: "/",
+    link: "/faq-help",
   },
   {
     title: "Help",
-    to: "/",
+    link: "/",
   },
   {
     title: "Returns",
-    to: "/",
+    link: "/",
   },
   {
     title: "Order Tracking",
-    to: "/",
+    link: "/",
   },
 ];
 
@@ -268,9 +268,11 @@ const LinksMobileScreen = (props) => {
 
 // Komponen Dropdown Menu
 const DropdownMenu = ({ links, isOpen, closeMenu }) => {
+  const token = localStorage.getItem("token");
+  const handleLogout = () => localStorage.removeItem("token");
   return (
     <div
-      className={`z-10 absolute top-8 -right-10 lg:left-0 w-48 bg-white rounded-lg shadow-lg text-black transition-all duration-300 ${
+      className={`z-10 absolute top-8 -right-10 lg:-left-20 w-48 bg-white rounded-lg shadow-lg text-black transition-all duration-300 ${
         isOpen
           ? "scale-100 opacity-100"
           : "scale-75 opacity-0 pointer-events-none"
@@ -281,9 +283,9 @@ const DropdownMenu = ({ links, isOpen, closeMenu }) => {
           key={index}
           to={link.to}
           className="block px-4 py-2 hover:bg-gray-100"
-          onClick={closeMenu}
+          onClick={link.title === "Login" ? handleLogout : closeMenu}
         >
-          {link.title}
+          {link.title === "Login" && token ? "Logout" : link.title}
         </Link>
       ))}
     </div>

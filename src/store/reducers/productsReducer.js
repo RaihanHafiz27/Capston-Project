@@ -41,6 +41,13 @@ export const productsReducer = (state = initialsState, action) => {
         ...state,
         cartItem: [...state.cartItem, action.payload],
       };
+    case "REMOVE_ITEM_CART":
+      return {
+        ...state,
+        cartItem: state.cartItem.filter(
+          (item) => item.id !== action.payload.id
+        ),
+      };
     case "DARK_MODE":
       return { ...state, isDarkMode: !state.isDarkMode };
     default:
