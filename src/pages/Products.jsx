@@ -26,7 +26,16 @@ export const ProductsPage = () => {
   console.log(isDarkMode);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    const data = localStorage.getItem("reduxState");
+    if (data) {
+      const parseData = JSON.parse(data);
+      dispatch({
+        type: "FETCH_PRODUCTS_SUCCESS",
+        payload: parseData.dataProducts.dataProducts,
+      });
+    } else {
+      dispatch(fetchProducts());
+    }
   }, []);
 
   const modalOpen = (product) => {
@@ -48,12 +57,10 @@ export const ProductsPage = () => {
 
   return (
     <section
-      className={`flex min-h-screen  border-2 border-pink-600 ${
-        isDarkMode ? "bg-gray-900" : "bg-white"
-      }`}
+      className={`flex min-h-screen ${isDarkMode ? "bg-gray-900" : "bg-white"}`}
     >
-      <div className="flex flex-col items-center justify-center flex-1 border-2 border-black">
-        <div className="w-full pt-12 border-orange-500 my-2border-2 lg:pt-20 lg:w-4/5 2xl:w-3/5 2xl:pt-28 lg:my-4">
+      <div className="flex flex-col items-center justify-center flex-1 ">
+        <div className="w-full pt-12 my-2 lg:pt-20 lg:w-4/5 2xl:w-3/5 2xl:pt-28 lg:my-4">
           <Carousel />
         </div>
         {/* test */}
@@ -79,7 +86,7 @@ export const ProductsPage = () => {
           </div>
         </div>
         {/* test */}
-        <div className="w-full my-8 border-2 border-orange-500 lg:w-4/5 2xl:w-3/5 2xl:p-2">
+        <div className="w-full my-8 lg:w-4/5 2xl:w-3/5 2xl:p-2">
           {/* <Browse /> */}
 
           <div className="space-y-4 ">
@@ -105,9 +112,9 @@ export const ProductsPage = () => {
 
 const Highlight = () => {
   return (
-    <div className="w-full h-auto p-6 bg-gray-900 border-2 border-pink-600 lg:p-0 lg:h-96">
-      <div className="flex flex-col-reverse items-center justify-center w-full h-full p-2 border border-white lg:flex-row text-slate-200">
-        <div className="w-11/12 h-full p-4 space-y-6 border border-blue-500 lg:w-1/2 font-Poppins">
+    <div className="w-full h-auto p-6 bg-gray-900 lg:p-2 lg:h-96">
+      <div className="flex flex-col-reverse items-center justify-center w-full h-full p-2 lg:flex-row text-slate-200">
+        <div className="w-11/12 h-full p-4 space-y-6 lg:w-1/2 font-Poppins">
           <p className="font-semibold text-rose-600">Categoris</p>
           <h2 className="text-2xl font-bold lg:text-5xl ">
             Enhance Your Music Experience
@@ -116,9 +123,11 @@ const Highlight = () => {
             JBL headphones deliver superior sound quality, comfort, and style
             for your everyday music experience.
           </p>
-          <button className="w-2/5 py-2 bg-rose-600">Buy Now!</button>
+          <button className="w-2/5 py-2 duration-300 hover:scale-105 bg-rose-600 hover:bg-rose-400">
+            Buy Now!
+          </button>
         </div>
-        <div className="w-11/12 h-full border border-yellow-400 lg:w-1/2">
+        <div className="w-11/12 h-full lg:w-1/2">
           <img
             src="/images/headphone.png"
             alt=""

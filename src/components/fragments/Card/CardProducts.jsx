@@ -18,8 +18,8 @@ export const CardProducts = (props) => {
   const filteredData = data.filter((item) => item.discount != null);
 
   return (
-    <section className="relative w-full h-auto overflow-hidden border-2 border-black">
-      <div className="flex items-center justify-between">
+    <section className="relative w-full h-auto overflow-hidden ">
+      <div className="flex items-center justify-between px-2">
         <h1 className="text-lg font-semibold text-gray-700 uppercase dark:text-slate-200 lg:text-2xl font-Poppins">
           {title}
         </h1>

@@ -1,13 +1,13 @@
 export const ContactUsPage = () => {
   return (
-    <div className="flex justify-center py-24 bg-gray-50">
-      <div className="w-4/5">
+    <div className="flex justify-center min-h-screen pb-10 pt-28 bg-gray-50 dark:bg-gray-900">
+      <div className="w-4/5 2xl:w-3/5">
         {/* Header Section */}
         <div className="mb-12 text-center">
-          <h1 className="text-5xl font-bold text-gray-800">
+          <h1 className="text-5xl font-bold text-gray-800 dark:text-slate-200">
             Get in Touch with <span className="text-rose-600">LUXURA</span>
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-600 dark:text-slate-200">
             Have questions or need assistance? Our team is here to help. Contact
             us using the form below or through our other channels.
           </p>

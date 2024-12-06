@@ -1,13 +1,36 @@
+const teams = [
+  {
+    name: "Pak Vincent 1",
+    role: "Founder & CEO",
+    img: "/images/pak_vincent.jpg",
+  },
+  {
+    name: "Pak Vincent 2",
+    role: "Chief Designer",
+    img: "/images/pak_vincent.jpg",
+  },
+  {
+    name: "Vincent Satoru",
+    role: "Marketing Head",
+    img: "/images/vincent_satoru.jpg",
+  },
+  {
+    name: "Ryomen Vincent",
+    role: "Operations Lead",
+    img: "/images/ryomen_vincent.jpg",
+  },
+];
+
 export const AboutPage = () => {
   return (
-    <div className="flex justify-center py-24 bg-gray-50">
-      <div className="w-4/5">
+    <div className="flex justify-center pb-10 pt-28 bg-gray-50 dark:bg-gray-900">
+      <div className="w-4/5 2xl:w-3/5">
         {/* Header Section */}
         <div className="mb-12 text-center">
-          <h1 className="text-5xl font-bold text-gray-800">
+          <h1 className="text-5xl font-bold text-gray-800 dark:text-slate-200">
             Welcome to <span className="text-rose-600">LUXURA</span>
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-600 dark:text-slate-200">
             Your ultimate destination for luxurious and premium products.
             Discover the passion behind our brand and what makes us unique in
             the world of e-commerce.
@@ -47,24 +70,29 @@ export const AboutPage = () => {
 
         {/* Team Section */}
         <div className="mt-16 text-center">
-          <h2 className="text-4xl font-bold text-gray-800">Meet Our Team</h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <h2 className="text-4xl font-bold text-gray-800 dark:text-slate-200">
+            Meet Our Team
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 dark:text-slate-200">
             Behind LUXURA is a dedicated team working tirelessly to deliver
             excellence.
           </p>
           <div className="grid grid-cols-1 gap-8 mt-10 sm:grid-cols-2 md:grid-cols-4">
-            {[
-              { name: "John Doe", role: "Founder & CEO" },
-              { name: "Jane Smith", role: "Chief Designer" },
-              { name: "Emily Johnson", role: "Marketing Head" },
-              { name: "Michael Brown", role: "Operations Lead" },
-            ].map((member, index) => (
+            {teams.map((member, index) => (
               <div key={index} className="flex flex-col items-center">
-                <div className="w-24 h-24 mb-4 rounded-full bg-gradient-to-r from-rose-400 to-rose-600"></div>
-                <h4 className="text-lg font-semibold text-gray-800">
+                <div className="w-24 h-24 mb-4 ">
+                  <img
+                    src={member.img}
+                    alt=""
+                    className="object-cover object-top w-full h-full rounded-full "
+                  />
+                </div>
+                <h4 className="text-lg font-semibold text-gray-800 dark:text-slate-200">
                   {member.name}
                 </h4>
-                <p className="text-gray-600">{member.role}</p>
+                <p className="text-gray-600 dark:text-slate-200">
+                  {member.role}
+                </p>
               </div>
             ))}
           </div>

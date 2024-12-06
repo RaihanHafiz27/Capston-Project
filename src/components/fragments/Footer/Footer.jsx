@@ -56,7 +56,7 @@ const quickLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-center w-full pt-10 bg-gray-900 border-2 border-orange-500 dark:bg-transparent dark:bg-white 2xl:w-3/5">
+    <footer className="flex flex-col items-center justify-center w-full pt-10 bg-gray-900 border-2 border-orange-500 dark:bg-transparent 2xl:w-3/5">
       <div className="flex w-4/5 border border-pink-600">
         <div className="w-2/5 border ">
           <div className="w-44 text-slate-200">
@@ -97,7 +97,7 @@ export const Footer = () => {
                     <img
                       src={item.icon}
                       alt="contact"
-                      className="w-12 h-12 transition duration-500 2xl:w-16 2xl:h-16 hover:-translate-x-2 hover:-translate-y-2"
+                      className="w-12 h-12 transition duration-500 2xl:w-12 2xl:h-12 hover:-translate-x-2 hover:-translate-y-2"
                     />
                   </a>
                 </li>

@@ -1,45 +1,31 @@
 import { Link, useLocation } from "react-router-dom";
-import { LogoutIcon } from "../../elements/icons/LogoutIcon";
-import { Button } from "../../elements/Button/Primary/Button";
-import { ProductsIcon } from "../../elements/icons/ProductsIcon";
-import { CartIcon } from "../../elements/icons/CartIcon";
-import { ProfileIcon } from "../../elements/icons/ProfileIcon";
-import { HomeIcon } from "../../elements/icons/HomeIcon";
-import { HamburgerIcon } from "../../elements/icons/HamburgerIcon";
 import { HamburgerBtn } from "../../elements/Button/Hamburger/HamburgerButon";
 import { useEffect, useRef, useState } from "react";
 import { EllipsisIcon } from "../../elements/icons/EllipsisIcon";
 import { Cart } from "../../elements/Cart/Cart";
-import { AboutIcon } from "../../elements/icons/AboutIcon";
-import { ServiceIcon } from "../../elements/icons/ServiceIcon";
-import { ContactIcon } from "../../elements/icons/ContactIcon";
+
 import { useDispatch, useSelector } from "react-redux";
 
 const navbarItems = [
   {
     title: "Home",
-    icon: <HomeIcon />,
     to: "/",
   },
   {
     title: "Products",
-    icon: <ProductsIcon />,
     to: "/products",
   },
   {
     title: "About Us",
-    icon: <AboutIcon />,
     to: "/about",
   },
   {
     title: "Contact Us",
-    icon: <ContactIcon />,
     to: "/contact-us",
   },
   {
     title: "Services",
-    icon: <ServiceIcon />,
-    to: "",
+    to: "#",
   },
 ];
 
@@ -72,13 +58,11 @@ const ellipsisLinks = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const [isHover, setIsHover] = useState(false);
-  // console.log(path.pathname);
   const sidebarRef = useRef(null);
   const dispatch = useDispatch();
   const isDarkMode = useSelector((state) => state.dataProducts.isDarkMode);
 
-  console.log(isDarkMode);
+  // console.log(isDarkMode);
 
   const handleDarkMode = () => dispatch({ type: "DARK_MODE" });
 
@@ -97,13 +81,12 @@ export const Navbar = () => {
   }, []);
 
   const isHome = location.pathname === "/";
-  const textColor = isHome ? "text-white" : "text-white";
-  const titleColor = isHome ? "text-white" : "text-white";
+  // const textColor = isHome ? "text-white" : "text-white";
 
   return (
     <nav
-      className={`fixed z-50 flex items-center justify-center w-full  lg:py-2 ${
-        isHome ? "bg-transparent" : "bg-rose-600 border-b-2 border-gray-200"
+      className={`fixed z-50 flex items-center justify-center w-full text-white lg:py-2 ${
+        isHome ? "bg-transparent" : "bg-rose-600"
       }`}
     >
       <div
@@ -126,11 +109,11 @@ export const Navbar = () => {
         </div>
         {/* links for large screen */}
         <div className="items-center justify-center hidden lg:flex">
-          <LinksLargeScreen textColor={textColor} />
+          <LinksLargeScreen />
         </div>
         <div className="items-center justify-center hidden space-x-4 lg:flex">
           <DarkMode isDarkMode={isDarkMode} handleDarkMode={handleDarkMode} />
-          <Cart textColor={textColor} />
+          <Cart />
           <EllipsisMenu />
         </div>
       </div>
@@ -147,7 +130,7 @@ export const Navbar = () => {
               <p className="ml-2 text-sm">KannaAnissa</p>
             </div>
             <div className="flex ml-2 space-x-2">
-              <Cart textColor={textColor} />
+              <Cart />
               <EllipsisMenu />
             </div>
           </div>
@@ -155,7 +138,7 @@ export const Navbar = () => {
         </div>
         <div className="flex-1 mt-8 border border-white">
           <LinksMobileScreen
-            textColor={textColor}
+            // textColor={textColor}
             location={location.pathname}
           />
         </div>
@@ -164,8 +147,7 @@ export const Navbar = () => {
   );
 };
 
-const LinksLargeScreen = (props) => {
-  const { textColor } = props;
+const LinksLargeScreen = () => {
   const [isHover, setIsHover] = useState(false);
   return (
     <ul className="flex items-center justify-center space-x-6 list-none ">
@@ -179,7 +161,7 @@ const LinksLargeScreen = (props) => {
         >
           <Link
             to={item.to}
-            className={`flex items-center text-xs lg:text-sm font-Poppins font-semibold leading-snug tracking-wider uppercase  ${textColor}`}
+            className={`flex items-center text-xs lg:text-sm font-Poppins font-semibold leading-snug tracking-wider uppercase `}
           >
             {item.title}
             {item.title === "Services" && (
@@ -203,7 +185,7 @@ const LinksLargeScreen = (props) => {
               {subLinksServices.map((sub) => (
                 <li key={sub.title} className="px-4 py-2">
                   <Link
-                    className="text-sm text-gray-700 hover:text-amber-500 lg:text-base"
+                    className="text-sm text-gray-700 hover:text-rose-600 lg:text-base"
                     to={sub.link}
                   >
                     {sub.title}
@@ -218,8 +200,7 @@ const LinksLargeScreen = (props) => {
   );
 };
 
-const LinksMobileScreen = (props) => {
-  const { location } = props;
+const LinksMobileScreen = () => {
   const [subHover, setSubHover] = useState(false);
   return (
     <ul className="flex flex-col items-center justify-center space-y-8">
@@ -282,7 +263,7 @@ const DropdownMenu = ({ links, isOpen, closeMenu }) => {
         <Link
           key={index}
           to={link.to}
-          className="block px-4 py-2 hover:bg-gray-100"
+          className="block px-4 py-2 hover:text-rose-600"
           onClick={link.title === "Login" ? handleLogout : closeMenu}
         >
           {link.title === "Login" && token ? "Logout" : link.title}

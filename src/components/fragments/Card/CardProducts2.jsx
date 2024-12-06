@@ -6,12 +6,12 @@ export const CardProducts2 = (props) => {
   // console.log(data);
 
   const getStars = (rating) => {
-    const roundedRating = Math.round(rating); // Membulatkan ke angka terdekat
+    const roundedRating = Math.round(rating);
     return "⭐".repeat(roundedRating);
   };
 
   return (
-    <section className="p-2 border-2 border-black lg:p-0">
+    <section className="p-2 lg:p-0">
       <h1 className="mb-2 text-2xl font-semibold text-gray-700 dark:text-slate-200 font-Poppins">
         {title}
       </h1>
@@ -19,12 +19,17 @@ export const CardProducts2 = (props) => {
         {data.map((item, id) => (
           <li
             key={id}
-            className="flex flex-col max-w-xs p-2 transition-all duration-300 bg-white border border-gray-200 rounded-lg font-Poppins hover:-translate-x-2 hover:-translate-y-2"
+            className={` relative flex flex-col max-w-xs p-2 transition-all duration-300 bg-white border border-gray-200 rounded-lg font-Poppins hover:-translate-x-2 hover:-translate-y-2 `}
             style={{
               boxShadow: "2px 2px 4px rgba(0,0,0,0.2)",
             }}
           >
-            <Link to={`/product-details/${item.id}`} className="flex-1">
+            <Link
+              to={item.quantity < 1 ? "#" : `/product-details/${item.id}`}
+              className={`flex-1 ${
+                item.quantity < 1 ? " grayscale opacity-70" : ""
+              }`}
+            >
               <div className="w-4/5 mx-auto h-28">
                 <img src={item.image} alt="" className="w-full h-full" />
               </div>
@@ -42,26 +47,39 @@ export const CardProducts2 = (props) => {
             </Link>
             <div className="flex items-end justify-between flex-1 mt-2">
               <button
+                disabled={item.quantity < 1}
                 onClick={() => openModal(item)}
-                className="w-full py-2 text-sm rounded-md bg-rose-600 hover:bg-rose-700 text-slate-200"
+                className={`w-full py-2 text-sm rounded-md bg-rose-600 hover:bg-rose-700 text-slate-200 ${
+                  item.quantity < 1 ? "cursor-not-allowed grayscale" : ""
+                }`}
               >
                 add cart
-                {/* <span className="absolute top-0 left-0 w-0 h-full transition-all duration-500 bg-amber-500 group-hover:w-full"></span>
-                <span className="relative z-10 delay-150 group-hover:text-slate-200">
-                  add cart
-                </span> */}
               </button>
             </div>
-            {/* gunakan untuk di details page */}
-            {/* <button className="relative w-full py-2 overflow-hidden text-sm transition-transform duration-500 border rounded-lg group border-amber-500">
-          <span className="absolute top-0 left-0 w-0 h-full transition-all duration-500 bg-amber-500 group-hover:w-full"></span>
-          <span className="relative z-10 delay-150 group-hover:text-slate-200">
-            add cart
-          </span>
-        </button> */}
+            {item.quantity < 1 && (
+              <div className="absolute top-0 z-50 right-16">
+                <img
+                  src="/images/sold-out.png"
+                  alt="sold"
+                  className="w-16 h-16 "
+                />
+              </div>
+            )}
           </li>
         ))}
       </ul>
     </section>
   );
 };
+
+{
+  /* gunakan untuk di details page */
+}
+{
+  /* <button className="relative w-full py-2 overflow-hidden text-sm transition-transform duration-500 border rounded-lg group border-amber-500">
+          <span className="absolute top-0 left-0 w-0 h-full transition-all duration-500 bg-amber-500 group-hover:w-full"></span>
+          <span className="relative z-10 delay-150 group-hover:text-slate-200">
+            add cart
+          </span>
+        </button> */
+}

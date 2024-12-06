@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, reduceQty } from "../../../store/actions/reduceQty";
+import { addToCart } from "../../../store/actions/reduceQty";
 
 export const AddCart = (props) => {
   const { modalClose, product } = props;
@@ -11,10 +11,10 @@ export const AddCart = (props) => {
 
   const handleConfirm = () => {
     if (quantity > 0) {
-      dispatch(reduceQty(product.id, quantity));
+      // dispatch(reduceQty(product.id, quantity));
       dispatch(addToCart(product, quantity));
       setIsConfirm(true);
-      setTimeout(() => modalClose(), 3000);
+      setTimeout(() => modalClose(), 2000);
       // modalClose();
     } else {
       alert("Quantity must be greater than 0");

@@ -38,10 +38,10 @@ export const CartPage = () => {
   };
 
   return (
-    <section className="flex h-screen bg-gray-300 border-2 border-pink-500">
+    <section className="flex h-screen bg-gray-300 border-2 border-pink-500 dark:bg-gray-900">
       <div className="flex items-center justify-center flex-1 mt-20 border-2 border-black">
         <div
-          className="w-4/5  h-[80vh] p-8 flex bg-white rounded-lg"
+          className="w-4/5 2xl:w-3/5  h-[80vh] 2xl:h-[70vh] p-8 flex bg-white rounded-lg"
           style={{ boxShadow: "4px 4px 6px  rgba(0,0,0,0.5)" }}
         >
           <div className="flex flex-col w-3/5 font-Poppins">
@@ -56,7 +56,11 @@ export const CartPage = () => {
             <ListItem dataCart={dataCart} handleRemoveItem={handleRemoveItem} />
           </div>
           <div className="flex justify-end w-2/5 ">
-            <FormPayment dataPayment={dataPayment} TotalPrice={TotalPrice} />
+            <FormPayment
+              dataPayment={dataPayment}
+              TotalPrice={TotalPrice}
+              dataCart={dataCart}
+            />
           </div>
         </div>
       </div>
@@ -122,12 +126,13 @@ const ListItem = (props) => {
 };
 
 const FormPayment = (props) => {
-  const { TotalPrice } = props;
+  const { TotalPrice, dataCart } = props;
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [nameCard, setNameCard] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [expDate, setExpDate] = useState("");
   const [cvv, setCvv] = useState("");
+  const dispatch = useDispatch();
 
   const dataCheckout = {
     total_price: TotalPrice,
@@ -135,6 +140,7 @@ const FormPayment = (props) => {
     card_number: cardNumber,
     exp_date: expDate,
     cvv: cvv,
+    products: dataCart,
   };
 
   const saveToLocal = () => {
@@ -147,6 +153,7 @@ const FormPayment = (props) => {
       alert("mohon isi data anda!!");
     } else {
       saveToLocal();
+      dispatch({ type: "CHECKOUT", payload: dataCheckout.products });
       alert("terima kasih mohon ditunggu dalam 3 hari");
     }
   };
@@ -165,8 +172,8 @@ const FormPayment = (props) => {
           <label
             htmlFor={item.id}
             key={item.id}
-            className={`flex flex-col items-center justify-center p-2 duration-300 rounded-md cursor-pointer bg-white/40 hover:bg-white group ${
-              selectedPayment === item.id ? "border-2 border-rose-500" : ""
+            className={`flex flex-col items-center justify-center p-2 duration-300 rounded-md cursor-pointer  hover:bg-white group ${
+              selectedPayment === item.id ? "bg-white" : "bg-white/40"
             }`}
           >
             <input

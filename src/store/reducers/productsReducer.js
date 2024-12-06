@@ -9,19 +9,26 @@ const initialsState = {
 export const productsReducer = (state = initialsState, action) => {
   switch (action.type) {
     case "FETCH_PRODUCTS_START":
-      return { ...state, loading: true, error: null };
+      return { ...state, isloading: true, error: null };
     case "FETCH_PRODUCTS_SUCCESS":
-      return { ...state, loading: false, dataProducts: action.payload };
+      return { ...state, isloading: false, dataProducts: action.payload };
     case "FETCH_PRODUCTS_FAILURE":
-      return { ...state, loading: false, error: action.payload };
-    case "REDUCE_QUANTITY":
+      return { ...state, isloading: false, error: action.payload };
+    case "CHECKOUT":
       return {
         ...state,
-        dataProducts: state.dataProducts.map((product) =>
-          product.id === action.payload.id
-            ? { ...product, quantity: product.quantity - action.payload.amount }
-            : product
-        ),
+        dataProducts: state.dataProducts.map((product) => {
+          const cartItem = action.payload.find(
+            (item) => item.id === product.id
+          );
+          if (cartItem) {
+            return {
+              ...product,
+              quantity: product.quantity - cartItem.quantity,
+            };
+          }
+          return product;
+        }),
       };
     case "ADD_TO_CART":
       const existingItem = state.cartItem.find(
