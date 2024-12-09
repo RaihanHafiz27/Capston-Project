@@ -65,7 +65,7 @@ export const ProductsPage = () => {
         </div>
         {/* test */}
         <div
-          className="w-full h-auto p-2 bg-white border border-gray-200 md:mx-auto md:rounded-xl lg:w-4/5 2xl:w-3/5"
+          className="w-full h-auto p-2 mt-4 bg-white border border-gray-200 md:mx-auto md:rounded-xl lg:w-4/5 2xl:w-3/5"
           style={{
             boxShadow: "2px 2px 4px rgba(0,0,0,0.5)",
           }}
@@ -89,7 +89,7 @@ export const ProductsPage = () => {
         <div className="w-full my-8 lg:w-4/5 2xl:w-3/5 2xl:p-2">
           {/* <Browse /> */}
 
-          <div className="space-y-4 ">
+          <div className="space-y-4">
             <Promotion />
             <TvRecomendation />
             <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400"></hr>

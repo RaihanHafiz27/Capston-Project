@@ -7,6 +7,7 @@ const initialsState = {
 };
 
 export const productsReducer = (state = initialsState, action) => {
+  console.log("State before checkout:", state);
   switch (action.type) {
     case "FETCH_PRODUCTS_START":
       return { ...state, isloading: true, error: null };
@@ -29,6 +30,7 @@ export const productsReducer = (state = initialsState, action) => {
           }
           return product;
         }),
+        cartItem: [],
       };
     case "ADD_TO_CART":
       const existingItem = state.cartItem.find(

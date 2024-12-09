@@ -26,6 +26,7 @@ const dataPayment = [
 
 export const CartPage = () => {
   const dataCart = useSelector((state) => state.dataProducts.cartItem);
+  const histori = useSelector((state) => state.dataProducts.checkoutHistori);
   const dispatch = useDispatch();
 
   const TotalPrice = dataCart.reduce(
@@ -36,6 +37,8 @@ export const CartPage = () => {
   const handleRemoveItem = (id) => {
     dispatch({ type: "REMOVE_ITEM_CART", payload: { id } });
   };
+
+  console.log(histori);
 
   return (
     <section className="flex h-screen bg-gray-300 border-2 border-pink-500 dark:bg-gray-900">
@@ -158,6 +161,8 @@ const FormPayment = (props) => {
     }
   };
 
+  const shipping = dataCart.length * 2;
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -251,7 +256,7 @@ const FormPayment = (props) => {
         </div>
         <div className="flex justify-between text-sm">
           <p>Shipping</p>
-          <p>$2</p>
+          <p>${shipping}</p>
         </div>
         <div className="flex justify-between text-sm">
           <p>Total</p>

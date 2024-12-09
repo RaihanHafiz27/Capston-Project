@@ -7,7 +7,7 @@ export const Button = (props) => {
   } = props;
   return (
     <button
-      className={`py-1 my-2 font-Roboto   bg-rose-600 hover:bg-rose-800  ${classname}`}
+      className={`py-1 my-2 font-Poppins  bg-rose-600 hover:bg-rose-800  ${classname}`}
       type={type}
       onClick={onClick}
     >

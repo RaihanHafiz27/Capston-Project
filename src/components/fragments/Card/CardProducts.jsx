@@ -19,7 +19,7 @@ export const CardProducts = (props) => {
 
   return (
     <section className="relative w-full h-auto overflow-hidden ">
-      <div className="flex items-center justify-between px-2">
+      <div className="flex items-center justify-between">
         <h1 className="text-lg font-semibold text-gray-700 uppercase dark:text-slate-200 lg:text-2xl font-Poppins">
           {title}
         </h1>

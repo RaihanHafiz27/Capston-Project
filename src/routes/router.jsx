@@ -1,16 +1,16 @@
-import { createBrowserRouter, useParams } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import { HomePage } from "../pages/Home";
 import { ProductsPage } from "../pages/Products";
 import { MainLayout } from "../components/layouts/Mainlayout";
 import { LoginPage } from "../pages/Signin";
 import { AuthLayout } from "../components/layouts/AuthLayout";
 import { RegisterPage } from "../pages/Signup";
-import { ProtectedRoute } from "./Protectedroute";
 import { CartPage } from "../pages/CartList";
 import { DetailsProducts } from "../pages/Details";
 import { AboutPage } from "../pages/About";
 import { ContactUsPage } from "../pages/Contact";
 import { FAQAndHelp } from "../pages/FaqHelp";
+import { ProfilePage } from "../pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -31,11 +31,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: (
-          <ProtectedRoute>
-            <CartPage />
-          </ProtectedRoute>
-        ),
+        element: <CartPage />,
+        loader: () => {
+          if (!localStorage.getItem("token")) {
+            return redirect("/signin");
+          }
+          return null;
+        },
       },
       {
         path: "/about",
@@ -49,6 +51,16 @@ const router = createBrowserRouter([
         path: "/faq-help",
         element: <FAQAndHelp />,
       },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+        loader: () => {
+          if (!localStorage.getItem("token")) {
+            return redirect("/signin");
+          }
+          return null;
+        },
+      },
     ],
   },
   {
@@ -58,10 +70,22 @@ const router = createBrowserRouter([
       {
         path: "signin",
         element: <LoginPage />,
+        loader: () => {
+          if (localStorage.getItem("token")) {
+            return redirect("/");
+          }
+          return null;
+        },
       },
       {
         path: "signup",
         element: <RegisterPage />,
+        loader: () => {
+          if (localStorage.getItem("token")) {
+            return redirect("/");
+          }
+          return null;
+        },
       },
     ],
   },

@@ -2,62 +2,53 @@ const dataContact = [
   {
     id: 1,
     icon: "/images/footer-icons/linkedin.png",
-    link: "/",
+    link: "https://www.linkedin.com/in/m-raihan-hafiz-91a368186/",
   },
   {
     id: 2,
     icon: "/images/footer-icons/github.png",
-    link: "/",
+    link: "https://github.com/RaihanHafiz27",
   },
   {
     id: 3,
     icon: "/images/footer-icons/tiktok.png",
-    link: "/",
+    link: "#",
   },
   {
     id: 4,
     icon: "/images/footer-icons/facebook.png",
-    link: "/",
+    link: "#",
   },
   {
     id: 5,
     icon: "/images/footer-icons/instagram.png",
-    link: "/",
+    link: "#",
   },
 ];
 
 const quickLinks = [
   {
     title: "Home",
-    // icon: <HomeIcon />,
     to: "/",
   },
   {
     title: "Products",
-    // icon: <ProductsIcon />,
     to: "/products",
   },
   {
     title: "About Us",
-    // icon: <AboutIcon />,
     to: "/about",
   },
   {
     title: "Contact Us",
-    // icon: <ContactIcon />,
     to: "/contact",
-  },
-  {
-    title: "Services",
-    // icon: <ServiceIcon />,
-    to: "",
   },
 ];
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-center w-full pt-10 bg-gray-900 border-2 border-orange-500 dark:bg-transparent 2xl:w-3/5">
-      <div className="flex w-4/5 border border-pink-600">
+    <footer className="flex flex-col items-center justify-center w-full pt-10 bg-gray-900 dark:bg-transparent 2xl:w-3/5">
+      <div className="flex w-4/5 ">
         <div className="w-2/5 border ">
           <div className="w-44 text-slate-200">
             <img
@@ -66,7 +57,6 @@ export const Footer = () => {
               className="w-full h-auto"
             />
           </div>
-          {/* <NavbarTitle classname={"text-slate-200"} /> */}
           <p className="mt-4 text-sm text-justify 2xl:text-base text-slate-200">
             Luxura is a premium e-commerce that brings high-quality fashion,
             accessories, and electronic products for those who prioritize style

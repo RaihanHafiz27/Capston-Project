@@ -23,28 +23,28 @@ export const login = async (dataUser, callback) => {
   }
 };
 
-// export const dataUser = async () => {
-//   const token = localStorage.getItem("token");
-//   if (!token) {
-//     throw new Error("Token tidak ditemukan");
-//   }
+export const dataUser = async () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    throw new Error();
+  }
+  const decode = jwtDecode(token);
+  console.log(decode);
 
-//   const decoded = jwtDecode(token);
-//   const userId = decoded.sub;
+  const userId = decode.sub;
+  console.log(userId);
 
-//   try {
-//     const res = await fetch("https://fakestoreapi.com/users");
-//     if (!res.ok) {
-//       throw new Error("Gagal mengambil data pengguna");
-//     }
-//     const users = await res.json();
-//     const user = users.find((user) => user.id === userId);
-
-//     if (!user) {
-//       throw new Error("User tidak ditemukan");
-//     }
-//     return user;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
+  try {
+    console.log(token);
+    const res = await fetch("https://fakestoreapi.com/users");
+    const users = await res.json();
+    const user = users.find((user) => user.id === userId);
+    console.log(user);
+    if (!user) {
+      throw new Error("user tidak ditemukan");
+    }
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};

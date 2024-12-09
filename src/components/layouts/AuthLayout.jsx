@@ -64,8 +64,8 @@ const Navigation = () => {
           options={{
             strings: [
               location.pathname === "/signin"
-                ? "Welcome to signin page"
-                : "Welcome to signup page",
+                ? "Let's start shopping now!"
+                : "Get the best deals!",
             ],
             autoStart: true,
             loop: true,

@@ -1,39 +1,3 @@
-// import { useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
-
-// export const DetailsProducts = () => {
-//   const details = useSelector((state) => state.dataProducts.dataProducts);
-//   const { id } = useParams();
-
-//   const data = details.find((item) => item.id == id);
-//   console.log(data);
-//   console.log(details);
-
-//   return (
-//     <section className="flex items-center justify-center min-h-screen bg-gray-300 border-2 border-pink-400">
-//       <div className="flex w-4/5 border-2 border-black 2xl:w-3/5 lg:mt-24 2xl:mt-28">
-//         <div className="flex items-center justify-between w-3/5 border-2 border-yellow-400">
-//           <div className="w-2/6 space-y-2 border-2 border-pink-400">
-//             <div className="bg-white border-2 border-pink-500">
-//               <img src={data.image} alt="" className="w-1/2 h-auto mx-auto " />{" "}
-//             </div>
-//             <div className="bg-white border-2 border-pink-500">
-//               <img src={data.image} alt="" className="w-1/2 h-auto mx-auto " />{" "}
-//             </div>
-//             <div className="bg-white border-2 border-pink-500">
-//               <img src={data.image} alt="" className="w-1/2 h-auto mx-auto " />{" "}
-//             </div>
-//           </div>
-//           <div className="w-3/5 h-full border-2 border-pink-500">
-//             <img src={data.image} alt="" className="w-1/2 mx-auto" />
-//           </div>
-//         </div>
-//         <div className="w-2/5 bg-white border-2 border-pink-500">test</div>
-//       </div>
-//     </section>
-//   );
-// };
-
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 

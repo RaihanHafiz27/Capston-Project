@@ -1,7 +1,7 @@
 export const Browse = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-auto py-10 border-2 border-pink-600 font-BebasNeue">
-      <h2 className="mb-4 text-3xl font-bold tracking-widest text-gray-800 uppercase border lg:text-5xl dark:text-slate-200">
+    <div className="flex flex-col items-center justify-center w-full h-auto py-0 font-BebasNeue">
+      <h2 className="my-6 text-3xl font-bold tracking-widest text-gray-800 uppercase lg:text-5xl dark:text-slate-200">
         Browse By Dress Style
       </h2>
       <div className="flex flex-wrap justify-between flex-1 w-full ">
@@ -44,7 +44,7 @@ const CardBrowse1 = (props) => {
     <div
       className="relative w-full h-64 overflow-hidden border border-gray-300 rounded-lg lg:w-2/5 group"
       style={{
-        boxShadow: "4px 4px 6px rgba(0,0,0,0.7)",
+        boxShadow: "4px 4px 6px rgba(0,0,0,0.5)",
       }}
     >
       <img
@@ -59,13 +59,6 @@ const CardBrowse1 = (props) => {
       >
         {title}
       </p>
-      {/* <span className="absolute bottom-0 w-full h-20 transition-all duration-500 ease-in-out translate-y-20 opacity-0 bg-gray-900/70 group-hover:translate-y-0 group-hover:opacity-100">
-        <div className="flex items-center justify-center w-full h-full">
-          <p className="w-4/5 text-2xl tracking-wider text-center text-slate-200">
-            {description}
-          </p>
-        </div>
-      </span> */}
       <span className="absolute bottom-0 w-full h-20 transition-all duration-500 ease-in-out translate-y-0 opacity-100 bg-gray-900/70 group-hover:translate-y-20 group-hover:opacity-0 md:opacity-0 md:translate-y-20 md:group-hover:translate-y-0 md:group-hover:opacity-100">
         <div className="flex items-center justify-center w-full h-full">
           <p className="w-4/5 text-lg tracking-wider text-center lg:text-2xl text-slate-200">
@@ -88,7 +81,7 @@ const CardBrowse2 = (props) => {
       <div
         className="relative w-full overflow-hidden rounded-lg"
         style={{
-          boxShadow: "4px 4px 6px rgba(0,0,0,0.7)",
+          boxShadow: "4px 4px 6px rgba(0,0,0,0.5)",
         }}
       >
         <img
@@ -103,13 +96,6 @@ const CardBrowse2 = (props) => {
         >
           {title}
         </p>
-        {/* <span className="absolute bottom-0 w-full h-20 transition-all duration-500 ease-in-out translate-y-20 opacity-0 bg-gray-900/70 group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="flex items-center justify-center w-full h-full">
-            <p className="w-4/5 text-2xl tracking-wider text-center text-slate-200">
-              {description}
-            </p>
-          </div>
-        </span> */}
         <span className="absolute bottom-0 w-full h-20 transition-all duration-500 ease-in-out translate-y-0 opacity-100 bg-gray-900/70 group-hover:translate-y-20 group-hover:opacity-0 md:opacity-0 md:translate-y-20 md:group-hover:translate-y-0 md:group-hover:opacity-100">
           <div className="flex items-center justify-center w-full h-full">
             <p className="w-4/5 text-lg tracking-wider text-center lg:text-2xl text-slate-200">

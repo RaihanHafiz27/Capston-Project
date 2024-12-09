@@ -57,7 +57,7 @@ export const FormLogin = () => {
         </button>
       </div>
 
-      <Button type="submit">{isLoading ? "Loading...." : "Submit"}</Button>
+      <Button type="submit">{isLoading ? "Loading...." : "Signin"}</Button>
       {isLoginFailed && (
         <p className="mt-2 text-center text-red-600 font-Roboto">
           {isLoginFailed}
