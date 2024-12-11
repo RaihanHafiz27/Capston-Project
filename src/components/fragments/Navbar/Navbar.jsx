@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HamburgerBtn } from "../../elements/Button/Hamburger/HamburgerButon";
 import { useEffect, useRef, useState } from "react";
 import { EllipsisIcon } from "../../elements/icons/EllipsisIcon";
@@ -202,6 +202,8 @@ const LinksLargeScreen = () => {
 
 const LinksMobileScreen = () => {
   const [subHover, setSubHover] = useState(false);
+  const navigate = useNavigate;
+  const handleLinks = (link) => navigate(link);
   return (
     <ul className="flex flex-col items-center justify-center space-y-8">
       {navbarItems.map((item) => (
@@ -230,12 +232,12 @@ const LinksMobileScreen = () => {
               >
                 {subLinksServices.map((sub) => (
                   <li key={sub.title} className="my-2 ">
-                    <Link
+                    <button
                       className="text-sm text-gray-700 hover:text-amber-500 lg:text-base"
-                      to={sub.link}
+                      onClick={() => handleLinks(sub.link)}
                     >
                       {sub.title}
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>

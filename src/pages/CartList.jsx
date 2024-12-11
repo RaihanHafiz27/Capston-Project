@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AddCart } from "../components/fragments/Modals/AddCart";
+import { Successful } from "../components/fragments/Modals/Successful";
 
 const dataPayment = [
   {
@@ -28,6 +30,7 @@ export const CartPage = () => {
   const dataCart = useSelector((state) => state.dataProducts.cartItem);
   const histori = useSelector((state) => state.dataProducts.checkoutHistori);
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
 
   const TotalPrice = dataCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -41,8 +44,8 @@ export const CartPage = () => {
   console.log(histori);
 
   return (
-    <section className="flex h-screen bg-gray-300 border-2 border-pink-500 dark:bg-gray-900">
-      <div className="flex items-center justify-center flex-1 mt-20 border-2 border-black">
+    <section className="flex h-screen bg-gray-300 dark:bg-gray-900">
+      <div className="flex items-center justify-center flex-1 mt-20 ">
         <div
           className="w-4/5 2xl:w-3/5  h-[80vh] 2xl:h-[70vh] p-8 flex bg-white rounded-lg"
           style={{ boxShadow: "4px 4px 6px  rgba(0,0,0,0.5)" }}
@@ -60,6 +63,7 @@ export const CartPage = () => {
           </div>
           <div className="flex justify-end w-2/5 ">
             <FormPayment
+              setIsOpen={setIsOpen}
               dataPayment={dataPayment}
               TotalPrice={TotalPrice}
               dataCart={dataCart}
@@ -67,6 +71,7 @@ export const CartPage = () => {
           </div>
         </div>
       </div>
+      {isOpen && <Successful />}
     </section>
   );
 };
@@ -93,7 +98,7 @@ const ListItem = (props) => {
                       </p>
                     </div>
                     <p className="text-sm text-teal-600">${item.price}</p>
-                    <p className="text-sm">Qty : {item.quantity}</p>
+                    <p className="text-sm">{item.quantity}</p>
                     <button onClick={() => handleRemoveItem(item.id)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +134,7 @@ const ListItem = (props) => {
 };
 
 const FormPayment = (props) => {
-  const { TotalPrice, dataCart } = props;
+  const { TotalPrice, dataCart, setIsOpen } = props;
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [nameCard, setNameCard] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -138,6 +143,7 @@ const FormPayment = (props) => {
   const dispatch = useDispatch();
 
   const dataCheckout = {
+    card_payment: selectedPayment,
     total_price: TotalPrice,
     name_card: nameCard,
     card_number: cardNumber,
@@ -157,7 +163,9 @@ const FormPayment = (props) => {
     } else {
       saveToLocal();
       dispatch({ type: "CHECKOUT", payload: dataCheckout.products });
-      alert("terima kasih mohon ditunggu dalam 3 hari");
+      setIsOpen(true);
+      // alert("terima kasih mohon ditunggu dalam 3 hari");
+      setTimeout(() => setIsOpen(false), 2000);
     }
   };
 
@@ -168,17 +176,16 @@ const FormPayment = (props) => {
       onSubmit={handleSubmit}
       className="flex flex-col w-11/12 h-full p-4 bg-gray-400 rounded-xl font-Poppins"
     >
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl text-slate-200">Cart Details</h2>
-        <img src="/images/user.png" alt="" className="w-10 h-10" />
-      </div>
-      <div className="grid grid-cols-4 gap-2 my-2">
+      <h2 className="text-xl font-semibold text-gray-800">Cart Details</h2>
+      <div className="grid grid-cols-4 gap-2 py-2">
         {dataPayment.map((item) => (
           <label
             htmlFor={item.id}
             key={item.id}
             className={`flex flex-col items-center justify-center p-2 duration-300 rounded-md cursor-pointer  hover:bg-white group ${
-              selectedPayment === item.id ? "bg-white" : "bg-white/40"
+              selectedPayment === item.title
+                ? "bg-white border-2 border-rose-600"
+                : "bg-white/40"
             }`}
           >
             <input
@@ -186,9 +193,9 @@ const FormPayment = (props) => {
               id={item.id}
               name="payment"
               value={item.id}
-              checked={selectedPayment === item.id}
+              checked={selectedPayment === item.title}
               className="hidden peer"
-              onChange={() => setSelectedPayment(item.id)}
+              onChange={() => setSelectedPayment(item.title)}
             />
             <img
               src={item.icon}
@@ -210,7 +217,9 @@ const FormPayment = (props) => {
           onChange={(e) => setNameCard(e.target.value)}
           className="w-full py-2 pl-4 text-sm rounded-md bg-white/50"
         />
-        <label htmlFor="cardNumber" className="text-sm">
+      </div>
+      <div className="my-2">
+        <label htmlFor="cardNumber" className="text-sm ">
           Card Number
         </label>
         <input
@@ -221,32 +230,32 @@ const FormPayment = (props) => {
           onChange={(e) => setCardNumber(e.target.value)}
           className="w-full px-4 py-2 text-sm rounded-md bg-white/50"
         />
-        <div className="grid grid-cols-2 gap-2 mt-2">
-          <div>
-            <label htmlFor="expDate" className="text-sm">
-              Expiration Date
-            </label>
-            <input
-              id="expDate"
-              name="expDate"
-              type="date"
-              onChange={(e) => setExpDate(e.target.value)}
-              className="w-full px-2 py-2 text-sm text-gray-400 rounded-md bg-white/50"
-            />
-          </div>
-          <div>
-            <label htmlFor="cvv" className="text-sm">
-              CVV
-            </label>
-            <input
-              id="cvv"
-              name="cvv"
-              type="text"
-              placeholder="123"
-              onChange={(e) => setCvv(e.target.value)}
-              className="w-full py-2 pl-4 text-sm rounded-md bg-white/50"
-            />
-          </div>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <div>
+          <label htmlFor="expDate" className="text-sm">
+            Expiration Date
+          </label>
+          <input
+            id="expDate"
+            name="expDate"
+            type="date"
+            onChange={(e) => setExpDate(e.target.value)}
+            className="w-full px-2 py-2 text-sm text-gray-400 rounded-md bg-white/50"
+          />
+        </div>
+        <div>
+          <label htmlFor="cvv" className="text-sm">
+            CVV
+          </label>
+          <input
+            id="cvv"
+            name="cvv"
+            type="text"
+            placeholder="123"
+            onChange={(e) => setCvv(e.target.value)}
+            className="w-full py-2 pl-4 text-sm rounded-md bg-white/50"
+          />
         </div>
       </div>
       <div className="flex-1 mt-2">
@@ -260,7 +269,7 @@ const FormPayment = (props) => {
         </div>
         <div className="flex justify-between text-sm">
           <p>Total</p>
-          <p>${(TotalPrice + 2).toFixed(2)}</p>
+          <p>${(TotalPrice + shipping).toFixed(2)}</p>
         </div>
         <button
           type="submit"

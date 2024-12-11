@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Carousel from "../components/fragments/Carousel/Carousel";
 import { useSelector, useDispatch } from "react-redux";
-import { CardProducts } from "../components/fragments/Card/CardProducts";
 import { Promotion } from "../components/fragments/Section/Promotion";
 import { CardCategory } from "../components/fragments/Card/CardCategory";
 import { TableTopUp } from "../components/fragments/TableTopUp";
@@ -9,14 +8,11 @@ import { CardProducts2 } from "../components/fragments/Card/CardProducts2";
 import { fetchProducts } from "../store/actions/productsActions";
 import { Footer } from "../components/fragments/Footer/Footer";
 import { AddCart } from "../components/fragments/Modals/AddCart";
-import { useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { TvRecomendation } from "../components/fragments/Section/TvRecomendation";
-import { Button } from "../components/elements/Button/Primary/Button";
 import { Browse } from "../components/fragments/Card/Browse";
-import { Successful } from "../components/fragments/Modals/Successful";
 
 export const ProductsPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { dataProducts } = useSelector((state) => state.dataProducts);
   const isDarkMode = useSelector((state) => state.dataProducts.isDarkMode);
@@ -44,7 +40,7 @@ export const ProductsPage = () => {
       setSelectProduct(product);
       setIsOpen(!isOpen);
     } else {
-      navigate("/signin");
+      redirect("/signin");
     }
   };
 

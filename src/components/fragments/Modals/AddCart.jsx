@@ -5,7 +5,7 @@ import { addToCart } from "../../../store/actions/reduceQty";
 export const AddCart = (props) => {
   const { modalClose, product } = props;
   const dispatch = useDispatch();
-  const cartItem = useSelector((state) => state);
+  const cartItem = useSelector((state) => state.dataProducts.cartItem);
   const [quantity, setQuantity] = useState(0);
   const [isConfirm, setIsConfirm] = useState(false);
 

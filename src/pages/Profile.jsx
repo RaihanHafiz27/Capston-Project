@@ -6,7 +6,7 @@ export const ProfilePage = () => {
   const [timezone, setTimeZone] = useState("");
   const [address, setAddress] = useState("");
   const checkoutHistory = localStorage.getItem("data_checkout");
-  const h = JSON.parse(checkoutHistory);
+  const history = JSON.parse(checkoutHistory);
 
   useEffect(() => {
     const fethData = async () => {
@@ -24,7 +24,7 @@ export const ProfilePage = () => {
     fethData();
   }, []);
 
-  console.log(h);
+  console.log(history);
 
   if (!user) {
     return (
@@ -55,13 +55,11 @@ export const ProfilePage = () => {
               </button>
             </div>
           </div>
-          <div className="my-8 border border-black ">
-            <div className="flex ">
-              <img src="/images/man-1.png" alt="" className="w-12 h-12" />
-              <div className="ml-2 ">
-                <p className="text-gray-800 capitalize">{user.username}</p>
-                <p className="text-gray-400">{user.email}</p>
-              </div>
+          <div className="flex flex-col items-center justify-center my-4">
+            <img src="/images/man-1.png" alt="" className="w-28 h-28" />
+            <div className="text-center ">
+              <p className="text-gray-800 capitalize">{user.username}</p>
+              <p className="text-gray-500">{user.email}</p>
             </div>
           </div>
           <div className="flex-1">
@@ -129,19 +127,78 @@ export const ProfilePage = () => {
             </div>
           </div>
         </div>
-        <div>
-          <p>Checkout History</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
-          <p>{h.card_number}</p>
+        <div className="mt-8 font-Poppins">
+          <div className="flex items-center justify-between my-4 text-gray-800">
+            <h2 className="text-lg font-semibold ">Checkout History</h2>
+            <p className="font-semibold">
+              Spending :{" "}
+              <span className="text-teal-700">
+                ${" "}
+                {history?.products.length > 0 ? `${history.total_price}` : "0"}
+              </span>
+            </p>
+          </div>
+          {history?.products.length > 0 ? (
+            <div className=" max-h-[70vh] overflow-auto">
+              <table className="w-full h-full border border-collapse border-gray-300 table-fixed">
+                <thead className="text-sm">
+                  <tr className="bg-gray-100">
+                    <th className="p-2 border border-gray-300">Product</th>
+                    <th className="p-2 border border-gray-300">Quantity</th>
+                    <th className="p-2 border border-gray-300">Total Price</th>
+                    <th className="p-2 border border-gray-300">Payment</th>
+                    <th className="p-2 border border-gray-300">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {history.products.map((item) => (
+                    <tr
+                      key={item.id}
+                      className="transition-colors hover:bg-gray-50"
+                    >
+                      <td className="p-2 border border-gray-300">
+                        <div className="flex items-center">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-12 h-12"
+                          />
+                          <p className="ml-2 text-sm line-clamp-2">
+                            {item.title}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="p-2 text-center border border-gray-300">
+                        {item.quantity}
+                      </td>
+                      <td className="p-2 text-center text-teal-700 border border-gray-300">
+                        $ {item.price * item.quantity}
+                      </td>
+                      <td className="p-2 text-center border border-gray-300">
+                        Debit
+                      </td>
+                      <td className="p-2 text-center border border-gray-300">
+                        {item.id % 2 === 0 ? "In Transit" : "Success"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center">
+              <img
+                src="/images/empty-cart.png"
+                alt="Empty Cart"
+                className="w-3/12 mb-4"
+              />
+              <p className="w-1/2 text-center text-gray-600">
+                Oops, your checkout history is empty! Looks like you haven’t
+                made any purchases yet. Let’s go shopping and grab something
+                awesome!
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

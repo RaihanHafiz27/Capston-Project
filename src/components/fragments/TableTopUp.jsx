@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 export const TableTopUp = () => {
   const [activeColumn, setActiveColumn] = useState("Credit");
@@ -60,6 +60,7 @@ export const TableTopUp = () => {
                       id="number"
                       name="notelp"
                       value=""
+                      readOnly
                       placeholder={getPlaceholder(activeColumn, "number")}
                       className="w-full p-2 text-xs border border-gray-400 rounded outline-none 2xl:text-sm"
                     />

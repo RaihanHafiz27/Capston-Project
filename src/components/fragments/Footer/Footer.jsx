@@ -28,28 +28,28 @@ const dataContact = [
 
 const quickLinks = [
   {
-    title: "Home",
-    to: "/",
-  },
-  {
-    title: "Products",
+    title: "Faq & Help",
     to: "/products",
   },
   {
-    title: "About Us",
-    to: "/about",
+    title: "Wishlist",
+    to: "/contact",
   },
   {
-    title: "Contact Us",
-    to: "/contact",
+    title: "Profile",
+    to: "/profile",
+  },
+  {
+    title: "Order",
+    to: "/about",
   },
 ];
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-center w-full pt-10 bg-gray-900 dark:bg-transparent 2xl:w-3/5">
+    <footer className="flex flex-col items-center justify-center w-full pt-10 bg-rose-700 dark:bg-transparent 2xl:w-3/5">
       <div className="flex w-4/5 ">
-        <div className="w-2/5 border ">
+        <div className="w-2/5 ">
           <div className="w-44 text-slate-200">
             <img
               src="/images/luxura-logo.png"
@@ -65,8 +65,8 @@ export const Footer = () => {
             every detail only at Luxura!
           </p>
         </div>
-        <div className="flex items-center justify-end w-3/5 border border-black">
-          <div className="w-2/5 h-full text-center border border-blue-600 font-Poppins text-slate-200">
+        <div className="flex items-center justify-end w-3/5 ">
+          <div className="w-2/5 h-full pt-2 text-center font-Poppins text-slate-200">
             <h2 className="mb-2">Quick Link</h2>
             <ul className="space-y-2">
               {quickLinks.map((item) => (
@@ -76,11 +76,11 @@ export const Footer = () => {
               ))}
             </ul>
           </div>
-          <div className="flex flex-col items-center flex-1 h-full border justify-evenly">
+          <div className="flex flex-col items-center h-full justify-evenly">
             <h2 className="text-base font-semibold tracking-wider text-center uppercase font-Poppins lg:text-lg 2xl:text-xl text-slate-200">
               Contact me on social media
             </h2>
-            <ul className="flex items-center justify-center space-x-6">
+            <ul className="flex items-center justify-center space-x-8">
               {dataContact.map((item) => (
                 <li key={item.id}>
                   <a href={item.link} target="_blank" className="">
@@ -98,7 +98,7 @@ export const Footer = () => {
               <a
                 href="https://fakestoreapi.com/"
                 target="_blank"
-                className="font-semibold text-rose-600"
+                className="font-semibold text-gray-800 dark:text-rose-600"
               >
                 Fake Store API
               </a>{" "}
@@ -106,7 +106,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center w-4/5 mt-4 mb-2 border border-black">
+      <div className="flex flex-col items-center justify-center w-4/5 mt-4 mb-2 ">
         <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400 my-2"></hr>
         <p className="text-slate-200">
           © 2024 Luxura. All Rights Reserved. Designed and Managed by
