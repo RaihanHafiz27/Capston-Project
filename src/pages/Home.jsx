@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { Button } from "../components/elements/Button/Primary/Button";
 import { RightDoubleArrow } from "../components/elements/icons/RighDoubleArrow";
 import { Link } from "react-router-dom";
 import TypewriterComponent from "typewriter-effect";
@@ -10,7 +9,6 @@ import "aos/dist/aos.css";
 export const HomePage = () => {
   const videoRef = useRef(null);
   const handleVideoEnd = () => {
-    // Mulai kembali video setelah selesai
     if (videoRef.current) {
       videoRef.current.play();
     }
@@ -31,7 +29,6 @@ export const HomePage = () => {
         src="/video/jam.webm"
         className="absolute inset-0 object-cover w-full h-full -z-10"
       ></video>
-
       <div className="z-10 w-11/12 lg:w-4/5">
         <div className="w-full lg:w-1/2 2xl:w-2/5">
           <div className="flex flex-col items-center justify-center text-lg font-semibold lg:items-start lg:text-2xl 2xl:text-3xl font-Poppins text-slate-200">
@@ -51,14 +48,13 @@ export const HomePage = () => {
                 ],
                 autoStart: true,
                 loop: true,
-                delay: 150, // Menyesuaikan kecepatan pengetikan
-                deleteSpeed: 50, // Menyesuaikan kecepatan penghapusan
-                cursor: "|", // Mengubah tampilan cursor
-                cursorClassName: "Typewriter__cursor", // Menggunakan class untuk lebih mengontrol gaya cursor
+                delay: 150,
+                deleteSpeed: 50,
+                cursor: "|",
+                cursorClassName: "Typewriter__cursor",
               }}
             />
           </div>
-
           <p
             className="mx-auto my-6 text-sm text-justify text-gray-400 lg:w-full lg:text-start lg:my-4 2xl:my-6 lg:text-base 2xl:text-lg font-Poppins"
             data-aos="fade-right"
@@ -68,9 +64,6 @@ export const HomePage = () => {
             Discover the epitome of luxury, elegance and sophistication. Explore
             our collection of premium products designed especially for you. Shop
             with with our exclusive e-commerce platform.
-            {/* Discover the epitome of luxury, elegance and sophistication. Explore
-            our collection of premium products designed just for you. Shop with
-            ease, your lifestyle with our exclusive e-commerce platform. */}
           </p>
           <Link
             data-aos="zoom-in-up"

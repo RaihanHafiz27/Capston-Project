@@ -5,9 +5,6 @@ import { useSelector } from "react-redux";
 export const Cart = (props) => {
   const { textColor } = props;
   const cartItem = useSelector((state) => state.dataProducts.cartItem);
-  console.log("panjang" + cartItem.length);
-
-  console.log(cartItem);
 
   return (
     <Link

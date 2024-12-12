@@ -1,10 +1,7 @@
 import { useRef } from "react";
-import { useSelector } from "react-redux";
 
 export const CardProducts = (props) => {
-  // const isDarkMode = useSelector((state) => state);
   const { data, title } = props;
-
   const sliderRef = useRef(null);
 
   const handleSlideLeft = () =>
@@ -14,7 +11,6 @@ export const CardProducts = (props) => {
     sliderRef.current.scrollBy({ left: 1000, behavior: "smooth" });
   };
 
-  // const filteredData = filterCondition ? data.filter(filterCondition) : data;
   const filteredData = data.filter((item) => item.discount != null);
 
   return (

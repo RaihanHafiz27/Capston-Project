@@ -3,7 +3,6 @@ import { HamburgerBtn } from "../../elements/Button/Hamburger/HamburgerButon";
 import { useEffect, useRef, useState } from "react";
 import { EllipsisIcon } from "../../elements/icons/EllipsisIcon";
 import { Cart } from "../../elements/Cart/Cart";
-
 import { useDispatch, useSelector } from "react-redux";
 
 const navbarItems = [
@@ -62,18 +61,14 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const isDarkMode = useSelector((state) => state.dataProducts.isDarkMode);
 
-  // console.log(isDarkMode);
-
   const handleDarkMode = () => dispatch({ type: "DARK_MODE" });
 
-  // Close sidebar if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -81,7 +76,6 @@ export const Navbar = () => {
   }, []);
 
   const isHome = location.pathname === "/";
-  // const textColor = isHome ? "text-white" : "text-white";
 
   return (
     <nav
@@ -306,7 +300,6 @@ const EllipsisMenu = () => {
 
 const DarkMode = (props) => {
   const { isDarkMode, handleDarkMode } = props;
-  console.log(isDarkMode);
 
   return (
     <button onClick={handleDarkMode}>

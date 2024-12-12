@@ -42,6 +42,7 @@ export const CardCategory = () => {
     <div className="grid w-full grid-cols-4 gap-2">
       {categorylist.category.map((item, index) => (
         <Link
+          to={"#"}
           key={index}
           className="flex flex-col items-center justify-center p-2"
         >

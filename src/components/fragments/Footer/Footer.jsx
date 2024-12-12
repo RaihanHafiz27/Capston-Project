@@ -1,63 +1,134 @@
+import { Link } from "react-router-dom";
+import Linkedin from "../../elements/icons/Linkedin";
+import Github from "../../elements/icons/Github";
+import Instagram from "../../elements/icons/Instagram";
+
 const dataContact = [
   {
     id: 1,
-    icon: "/images/footer-icons/linkedin.png",
+    icon: <Linkedin />,
     link: "https://www.linkedin.com/in/m-raihan-hafiz-91a368186/",
   },
   {
     id: 2,
-    icon: "/images/footer-icons/github.png",
+    icon: <Github />,
     link: "https://github.com/RaihanHafiz27",
   },
   {
     id: 3,
-    icon: "/images/footer-icons/tiktok.png",
-    link: "#",
-  },
-  {
-    id: 4,
-    icon: "/images/footer-icons/facebook.png",
-    link: "#",
-  },
-  {
-    id: 5,
-    icon: "/images/footer-icons/instagram.png",
+    icon: <Instagram />,
     link: "#",
   },
 ];
 
-const quickLinks = [
+const productLinks = [
   {
-    title: "Faq & Help",
-    to: "/products",
+    id: 1,
+    title: "returns",
+    to: "#",
   },
   {
-    title: "Wishlist",
-    to: "/contact",
+    id: 2,
+    title: "tracking",
+    to: "#",
   },
   {
-    title: "Profile",
-    to: "/profile",
+    id: 3,
+    title: "history",
+    to: "#",
   },
   {
-    title: "Order",
-    to: "/about",
+    id: 4,
+    title: "wishlist",
+    to: "#",
+  },
+];
+
+const information = [
+  {
+    id: 1,
+    title: "faq",
+    to: "#",
+  },
+  {
+    id: 2,
+    title: "help",
+    to: "#",
+  },
+  {
+    id: 3,
+    title: "blog",
+    to: "#",
+  },
+  {
+    id: 4,
+    title: "support",
+    to: "#",
+  },
+];
+
+const company = [
+  {
+    id: 1,
+    title: "about us",
+    to: "#",
+  },
+  {
+    id: 2,
+    title: "careers",
+    to: "#",
+  },
+  {
+    id: 3,
+    title: "contact us",
+    to: "#",
   },
 ];
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-center w-full pt-10 bg-rose-700 dark:bg-transparent 2xl:w-3/5">
+    <footer className="flex flex-col items-center justify-center w-full pt-10 pb-2 bg-rose-700 dark:bg-transparent 2xl:w-3/5">
       <div className="flex w-4/5 ">
-        <div className="w-2/5 ">
-          <div className="w-44 text-slate-200">
-            <img
-              src="/images/luxura-logo.png"
-              alt=""
-              className="w-full h-auto"
-            />
+        <div className="grid w-3/5 grid-cols-3 gap-2 text-slate-200 ">
+          <div className="tracking-wider ">
+            <h6 className="font-semibold font-Poppins">Product</h6>
+            <ul className="my-2 space-y-1">
+              {productLinks.map((item) => (
+                <li key={item.id}>
+                  <Link className="text-gray-500 capitalize hover:text-slate-200">
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          <p className="mt-4 text-sm text-justify 2xl:text-base text-slate-200">
+          <div className="tracking-wider ">
+            <h6 className="font-semibold font-Poppins">Information</h6>
+            <ul className="my-2 space-y-1">
+              {information.map((item) => (
+                <li key={item.id}>
+                  <Link className="text-gray-500 capitalize hover:text-slate-200">
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="tracking-wider ">
+            <h6 className="font-semibold font-Poppins">Company</h6>
+            <ul className="my-2 space-y-1">
+              {company.map((item) => (
+                <li key={item.id}>
+                  <Link className="text-gray-500 capitalize hover:text-slate-200">
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="w-2/5">
+          <p className="text-justify text-slate-200 2xl:text-base">
             Luxura is a premium e-commerce that brings high-quality fashion,
             accessories, and electronic products for those who prioritize style
             and luxury. Enjoy an exclusive shopping experience with easy
@@ -65,59 +136,40 @@ export const Footer = () => {
             every detail only at Luxura!
           </p>
         </div>
-        <div className="flex items-center justify-end w-3/5 ">
-          <div className="w-2/5 h-full pt-2 text-center font-Poppins text-slate-200">
-            <h2 className="mb-2">Quick Link</h2>
-            <ul className="space-y-2">
-              {quickLinks.map((item) => (
-                <li key={item.title}>
-                  <p className="text-sm">{item.title}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex flex-col items-center h-full justify-evenly">
-            <h2 className="text-base font-semibold tracking-wider text-center uppercase font-Poppins lg:text-lg 2xl:text-xl text-slate-200">
-              Contact me on social media
-            </h2>
-            <ul className="flex items-center justify-center space-x-8">
-              {dataContact.map((item) => (
-                <li key={item.id}>
-                  <a href={item.link} target="_blank" className="">
-                    <img
-                      src={item.icon}
-                      alt="contact"
-                      className="w-12 h-12 transition duration-500 2xl:w-12 2xl:h-12 hover:-translate-x-2 hover:-translate-y-2"
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs lg:text-sm text-slate-200 font-Poppins">
-              Data provided by{" "}
-              <a
-                href="https://fakestoreapi.com/"
-                target="_blank"
-                className="font-semibold text-gray-800 dark:text-rose-600"
-              >
-                Fake Store API
-              </a>{" "}
-            </p>
-          </div>
-        </div>
       </div>
-      <div className="flex flex-col items-center justify-center w-4/5 mt-4 mb-2 ">
-        <hr className="w-full h-0.5 bg-gray-200 border-0 rounded dark:bg-gray-400 my-2"></hr>
-        <p className="text-slate-200">
-          © 2024 Luxura. All Rights Reserved. Designed and Managed by
-          <a
-            href="https://www.linkedin.com/in/m-raihan-hafiz-91a368186/"
-            target="_blank"
-            className="ml-2 font-medium text-rose-600"
-          >
-            M Raihan Hafiz
-          </a>{" "}
-        </p>
+      <div className="flex flex-col items-center justify-center w-4/5 ">
+        <hr className="w-full h-[1px] bg-gray-200 border-0 rounded dark:bg-gray-400 my-4"></hr>
+        <div className="flex items-center justify-between w-full">
+          <img src="/images/luxura-logo.png" alt="" className="h-auto w-52" />
+          <ul className="flex space-x-8 capitalize text-slate-200">
+            <li>term</li>
+            <li>privacy</li>
+            <li>cookies</li>
+          </ul>
+          {/* <p className="text-slate-200">
+            © 2024 Luxura. All Rights Reserved. Designed and Managed by
+            <a
+              href="https://www.linkedin.com/in/m-raihan-hafiz-91a368186/"
+              target="_blank"
+              className="ml-2 font-medium text-rose-600"
+            >
+              M Raihan Hafiz
+            </a>{" "}
+          </p> */}
+          <ul className="flex items-center justify-center space-x-4">
+            {dataContact.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  className="flex items-center justify-center w-10 h-10 p-2 transition-transform duration-300 ease-in-out border rounded-full hover:scale-110 text-slate-200"
+                >
+                  {item.icon}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </footer>
   );

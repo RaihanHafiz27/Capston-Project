@@ -140,6 +140,7 @@ const FormPayment = (props) => {
   const [cardNumber, setCardNumber] = useState("");
   const [expDate, setExpDate] = useState("");
   const [cvv, setCvv] = useState("");
+  const [isShow, setIsShow] = useState(false);
   const dispatch = useDispatch();
 
   const dataCheckout = {
@@ -215,7 +216,8 @@ const FormPayment = (props) => {
           type="text"
           placeholder="Name"
           onChange={(e) => setNameCard(e.target.value)}
-          className="w-full py-2 pl-4 text-sm rounded-md bg-white/50"
+          autoComplete=""
+          className="w-full py-2 pl-4 text-sm rounded-md outline-none bg-white/50"
         />
       </div>
       <div className="my-2">
@@ -228,7 +230,7 @@ const FormPayment = (props) => {
           type="text"
           placeholder="111 222 333 444"
           onChange={(e) => setCardNumber(e.target.value)}
-          className="w-full px-4 py-2 text-sm rounded-md bg-white/50"
+          className="w-full px-4 py-2 text-sm rounded-md outline-none bg-white/50"
         />
       </div>
       <div className="grid grid-cols-2 gap-2">
@@ -241,21 +243,32 @@ const FormPayment = (props) => {
             name="expDate"
             type="date"
             onChange={(e) => setExpDate(e.target.value)}
-            className="w-full px-2 py-2 text-sm text-gray-400 rounded-md bg-white/50"
+            className="w-full px-2 py-2 text-sm rounded-md outline-none bg-white/50"
           />
         </div>
-        <div>
+        <div className="relative">
           <label htmlFor="cvv" className="text-sm">
             CVV
           </label>
           <input
             id="cvv"
             name="cvv"
-            type="text"
+            type={isShow ? "text" : "password"}
             placeholder="123"
             onChange={(e) => setCvv(e.target.value)}
-            className="w-full py-2 pl-4 text-sm rounded-md bg-white/50"
+            className="w-full py-2 pl-4 text-sm rounded-md outline-none bg-white/50"
           />
+          <button
+            type="button"
+            onClick={() => setIsShow(!isShow)}
+            className="absolute right-2 top-8"
+          >
+            {isShow ? (
+              <img src="/images/show.png" alt="image" className="w-4 h-4"></img>
+            ) : (
+              <img src="/images/hide.png" alt="image" className="w-4 h-4"></img>
+            )}
+          </button>
         </div>
       </div>
       <div className="flex-1 mt-2">

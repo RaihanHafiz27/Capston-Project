@@ -7,7 +7,6 @@ const initialsState = {
 };
 
 export const productsReducer = (state = initialsState, action) => {
-  console.log("State before checkout:", state);
   switch (action.type) {
     case "FETCH_PRODUCTS_START":
       return { ...state, isloading: true, error: null };
@@ -50,18 +49,6 @@ export const productsReducer = (state = initialsState, action) => {
         ...state,
         cartItem: [...state.cartItem, action.payload],
       };
-    case "ADD_QTY-CART":
-      const existItem = state.cartItem.find(
-        (item) => item.id === action.payload.id
-      );
-      if (existItem) {
-        return {
-          ...state,
-          cartItem: state.cartItem.map((item) => item.id === action.payload.id)
-            ? { ...item, quantity: item.quantity + action.payload.quantity }
-            : item,
-        };
-      }
     case "REMOVE_ITEM_CART":
       return {
         ...state,

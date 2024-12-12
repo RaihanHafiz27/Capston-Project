@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { CardProducts } from "../Card/CardProducts";
-import { CardProducts2 } from "../Card/CardProducts2";
 
 export const TvRecomendation = () => {
   const [dataTv, setDataTv] = useState([]);
