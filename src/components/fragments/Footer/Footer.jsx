@@ -146,16 +146,6 @@ export const Footer = () => {
             <li>privacy</li>
             <li>cookies</li>
           </ul>
-          {/* <p className="text-slate-200">
-            © 2024 Luxura. All Rights Reserved. Designed and Managed by
-            <a
-              href="https://www.linkedin.com/in/m-raihan-hafiz-91a368186/"
-              target="_blank"
-              className="ml-2 font-medium text-rose-600"
-            >
-              M Raihan Hafiz
-            </a>{" "}
-          </p> */}
           <ul className="flex items-center justify-center space-x-4">
             {dataContact.map((item) => (
               <li key={item.id}>

@@ -51,7 +51,6 @@ const ellipsisLinks = [
   { title: "Profile", to: "/profile" },
   { title: "Order History", to: "/orders" },
   { title: "Wishlist", to: "/wishlist" },
-  { title: "Login", to: "/signin" },
 ];
 
 export const Navbar = () => {
@@ -94,8 +93,6 @@ export const Navbar = () => {
               className="w-full h-auto"
             />
           </div>
-
-          {/* <NavbarTitle classname={`w-auto ${titleColor}`} /> */}
           {/* hamburger for mobile screen */}
           <div className="lg:hidden">
             <HamburgerBtn onClick={() => setIsOpen(!isOpen)} isOpen={isOpen} />
@@ -131,10 +128,7 @@ export const Navbar = () => {
           <HamburgerBtn onClick={() => setIsOpen(!isOpen)} isOpen={isOpen} />
         </div>
         <div className="flex-1 mt-8 border border-white">
-          <LinksMobileScreen
-            // textColor={textColor}
-            location={location.pathname}
-          />
+          <LinksMobileScreen location={location.pathname} />
         </div>
       </div>
     </nav>
@@ -246,7 +240,10 @@ const LinksMobileScreen = () => {
 // Komponen Dropdown Menu
 const DropdownMenu = ({ links, isOpen, closeMenu }) => {
   const token = localStorage.getItem("token");
-  const handleLogout = () => localStorage.removeItem("token");
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
   return (
     <div
       className={`z-10 absolute top-8 -right-10 lg:-left-20 w-48 bg-white rounded-lg shadow-lg text-black transition-all duration-300 ${
@@ -259,12 +256,28 @@ const DropdownMenu = ({ links, isOpen, closeMenu }) => {
         <Link
           key={index}
           to={link.to}
+          onClick={() => closeMenu()}
           className="block px-4 py-2 hover:text-rose-600"
-          onClick={link.title === "Login" ? handleLogout : closeMenu}
         >
-          {link.title === "Login" && token ? "Logout" : link.title}
+          {link.title}
         </Link>
       ))}
+      {token ? (
+        <button
+          onClick={() => handleLogout()}
+          className="block px-4 py-2 hover:text-rose-600"
+        >
+          Logout
+        </button>
+      ) : (
+        <Link
+          to={"/signin"}
+          className="block px-4 py-2 hover:text-rose-600"
+          onClick={() => closeMenu()}
+        >
+          Login
+        </Link>
+      )}
     </div>
   );
 };

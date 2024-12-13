@@ -5,7 +5,7 @@
 /* import fonts */
 @font-face {
   font-family: "Roboto";
-  src: url("/fonts/Roboto.ttf") format("truetype");
+  src: url("/fonts/Roboto-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

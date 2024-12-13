@@ -18,18 +18,19 @@ export const ProfilePage = () => {
       setAddress(
         `${userData.address.number} ${userData.address.street} ${userData.address.city}`
       );
-      // console.log(lat);
-      // console.log(long);
     };
     fethData();
   }, []);
 
-  console.log(history);
+  const spending =
+    history?.products?.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    ) || 0;
 
   if (!user) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
-        {/* <p>Loading...</p> */}
         <img src="/images/Spinner.gif" alt="" />
       </div>
     );
@@ -132,10 +133,7 @@ export const ProfilePage = () => {
             <h2 className="text-lg font-semibold ">Checkout History</h2>
             <p className="font-semibold">
               Spending :{" "}
-              <span className="text-teal-700">
-                ${" "}
-                {history?.products.length > 0 ? `${history.total_price}` : "0"}
-              </span>
+              <span className="text-teal-700">$ {spending.toFixed(2)}</span>
             </p>
           </div>
           {history?.products.length > 0 ? (

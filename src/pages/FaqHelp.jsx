@@ -47,7 +47,7 @@ export const FAQAndHelp = () => {
   return (
     <div className="flex justify-center pb-10 pt-28 bg-gray-50 dark:bg-gray-900">
       <div className="w-4/5 2xl:w-3/5">
-        {/* Header Section */}
+        {/* Start Header Section */}
         <div className="mb-12 text-center">
           <h1 className="text-5xl font-bold text-gray-800 dark:text-slate-200">
             <span className="text-rose-600">FAQ</span> & Help
@@ -57,8 +57,8 @@ export const FAQAndHelp = () => {
             your concerns.
           </p>
         </div>
-
-        {/* FAQ Section */}
+        {/* End Header Section */}
+        {/* Start FAQ Section */}
         <div className="mb-16">
           <h2 className="mb-8 text-3xl font-semibold text-gray-800 dark:text-slate-200">
             Frequently Asked Questions
@@ -74,8 +74,8 @@ export const FAQAndHelp = () => {
             ))}
           </div>
         </div>
-
-        {/* Help Topics Section */}
+        {/* End FAQ Section */}
+        {/* Start Help Topics Section */}
         <div>
           <h2 className="mb-8 text-3xl font-semibold text-gray-800 dark:text-slate-200">
             Help Topics
@@ -92,6 +92,7 @@ export const FAQAndHelp = () => {
             ))}
           </div>
         </div>
+        {/* End Help Topics Section */}
       </div>
     </div>
   );

@@ -4,12 +4,6 @@ import { InputForm } from "../../elements/Input/Index";
 export const FormRegister = () => {
   return (
     <form action="">
-      {/* <InputForm
-        name="email"
-        type="email"
-        label="Email"
-        placeholder="Example@gmail.com"
-      /> */}
       <InputForm
         name="username"
         type="text"

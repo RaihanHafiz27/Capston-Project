@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AddCart } from "../components/fragments/Modals/AddCart";
 import { Successful } from "../components/fragments/Modals/Successful";
 
 const dataPayment = [
@@ -28,7 +27,6 @@ const dataPayment = [
 
 export const CartPage = () => {
   const dataCart = useSelector((state) => state.dataProducts.cartItem);
-  const histori = useSelector((state) => state.dataProducts.checkoutHistori);
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,8 +38,6 @@ export const CartPage = () => {
   const handleRemoveItem = (id) => {
     dispatch({ type: "REMOVE_ITEM_CART", payload: { id } });
   };
-
-  console.log(histori);
 
   return (
     <section className="flex h-screen bg-gray-300 dark:bg-gray-900">
@@ -165,7 +161,6 @@ const FormPayment = (props) => {
       saveToLocal();
       dispatch({ type: "CHECKOUT", payload: dataCheckout.products });
       setIsOpen(true);
-      // alert("terima kasih mohon ditunggu dalam 3 hari");
       setTimeout(() => setIsOpen(false), 2000);
     }
   };
@@ -216,7 +211,6 @@ const FormPayment = (props) => {
           type="text"
           placeholder="Name"
           onChange={(e) => setNameCard(e.target.value)}
-          autoComplete=""
           className="w-full py-2 pl-4 text-sm rounded-md outline-none bg-white/50"
         />
       </div>

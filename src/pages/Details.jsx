@@ -11,8 +11,6 @@ export const DetailsProducts = () => {
 
   const product = products.find((item) => item.id == id);
 
-  console.log(product);
-
   const modalOpen = (product) => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -46,7 +44,7 @@ export const DetailsProducts = () => {
         className="w-4/5 max-h-[90vh] h-auto bg-white rounded-lg mt-24 flex flex-col md:flex-row overflow-hidden"
         style={{ boxShadow: "8px 8px 8px rgba(0,0,0,0.2)" }}
       >
-        {/* Image  */}
+        {/* Start Image  */}
         <div className="p-4 md:w-2/3">
           <div className="flex flex-col items-center h-full space-y-4">
             <div className="w-full overflow-hidden border rounded-lg h-80">
@@ -81,8 +79,8 @@ export const DetailsProducts = () => {
             </div>
           </div>
         </div>
-
-        {/* Product Details */}
+        {/* End Image  */}
+        {/* Start Product Details */}
         <div className="flex flex-col justify-between p-6 overflow-auto md:w-1/3 font-Poppins">
           <div>
             <h2 className="text-xl font-bold text-gray-800 ">
@@ -108,6 +106,7 @@ export const DetailsProducts = () => {
             </button>
           </div>
         </div>
+        {/* End Product Details */}
       </div>
       {isOpen && <AddCart product={selectedProduct} modalClose={modalClose} />}
     </section>

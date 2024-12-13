@@ -1,27 +1,22 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../../store/actions/reduceQty";
 
 export const AddCart = (props) => {
   const { modalClose, product } = props;
   const dispatch = useDispatch();
-  const cartItem = useSelector((state) => state.dataProducts.cartItem);
   const [quantity, setQuantity] = useState(0);
   const [isConfirm, setIsConfirm] = useState(false);
 
   const handleConfirm = () => {
     if (quantity > 0) {
-      // dispatch(reduceQty(product.id, quantity));
       dispatch(addToCart(product, quantity));
       setIsConfirm(true);
       setTimeout(() => modalClose(), 2000);
-      // modalClose();
     } else {
       alert("Quantity must be greater than 0");
     }
   };
-
-  console.log(cartItem);
 
   return (
     <>
@@ -50,7 +45,6 @@ export const AddCart = (props) => {
                     className="w-full h-[30vh] object-contain"
                   />
                 </div>
-
                 <p className="my-2 text-sm text-center text-gray-700 font-Poppins">
                   {product.title}
                 </p>
@@ -77,7 +71,6 @@ export const AddCart = (props) => {
                 >
                   Confirm
                 </button>
-                {/* Close Modal */}
                 <button
                   onClick={() => modalClose()}
                   className="absolute top-0 right-0 flex items-center justify-center px-6 py-1 bg-red-500 rounded-tr-lg rounded-bl-lg text-slate-200"

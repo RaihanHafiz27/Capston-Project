@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 export const CardProducts2 = (props) => {
   const { data, title, openModal } = props;
 
-  // console.log(data);
-
   const getStars = (rating) => {
     const roundedRating = Math.round(rating);
     return "⭐".repeat(roundedRating);
@@ -57,7 +55,7 @@ export const CardProducts2 = (props) => {
               </button>
             </div>
             {item.quantity < 1 && (
-              <div className="absolute top-0 z-50 right-16">
+              <div className="absolute top-0 right-16">
                 <img
                   src="/images/sold-out.png"
                   alt="sold"
@@ -71,15 +69,3 @@ export const CardProducts2 = (props) => {
     </section>
   );
 };
-
-{
-  /* gunakan untuk di details page */
-}
-{
-  /* <button className="relative w-full py-2 overflow-hidden text-sm transition-transform duration-500 border rounded-lg group border-amber-500">
-          <span className="absolute top-0 left-0 w-0 h-full transition-all duration-500 bg-amber-500 group-hover:w-full"></span>
-          <span className="relative z-10 delay-150 group-hover:text-slate-200">
-            add cart
-          </span>
-        </button> */
-}

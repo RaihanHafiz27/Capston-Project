@@ -12,7 +12,7 @@ export const FormLogin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    setIsLoading(true); // Mulai loading
+    setIsLoading(true);
     const dataUser = {
       username: e.target.username.value,
       password: e.target.password.value,
@@ -56,7 +56,6 @@ export const FormLogin = () => {
           )}
         </button>
       </div>
-
       <Button type="submit">{isLoading ? "Loading...." : "Signin"}</Button>
       {isLoginFailed && (
         <p className="mt-2 text-center text-red-600 font-Roboto">

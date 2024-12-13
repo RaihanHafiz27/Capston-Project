@@ -25,7 +25,7 @@ export const AboutPage = () => {
   return (
     <div className="flex justify-center pb-10 pt-28 bg-gray-50 dark:bg-gray-900">
       <div className="w-4/5 2xl:w-3/5">
-        {/* Header Section */}
+        {/* Start Header Section */}
         <div className="mb-12 text-center">
           <h1 className="text-5xl font-bold text-gray-800 dark:text-slate-200">
             Welcome to <span className="text-rose-600">LUXURA</span>
@@ -36,8 +36,8 @@ export const AboutPage = () => {
             the world of e-commerce.
           </p>
         </div>
-
-        {/* Mission, Vision, and Values Section */}
+        {/* End Header Section */}
+        {/* Start Mission, Vision, and Values Section */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="p-8 text-center bg-white rounded-lg shadow-lg">
             <h2 className="mb-4 text-2xl font-semibold text-gray-800">
@@ -67,8 +67,8 @@ export const AboutPage = () => {
             </p>
           </div>
         </div>
-
-        {/* Team Section */}
+        {/* End Mission, Vision, and Values Section */}
+        {/* Start Team Section */}
         <div className="mt-16 text-center">
           <h2 className="text-4xl font-bold text-gray-800 dark:text-slate-200">
             Meet Our Team
@@ -97,8 +97,8 @@ export const AboutPage = () => {
             ))}
           </div>
         </div>
-
-        {/* Call to Action Section */}
+        {/* End Team Section */}
+        {/* Start Call to Action Section */}
         <div className="py-12 mt-16 text-white rounded-lg bg-gradient-to-r from-rose-400 to-rose-600">
           <div className="text-center">
             <h3 className="text-3xl font-bold">Why Choose LUXURA?</h3>
@@ -111,6 +111,7 @@ export const AboutPage = () => {
             </button>
           </div>
         </div>
+        {/* End Call to Action Section */}
       </div>
     </div>
   );

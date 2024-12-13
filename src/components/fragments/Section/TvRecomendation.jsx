@@ -10,7 +10,6 @@ export const TvRecomendation = () => {
           "https://fakestoreapi.in/api/products/category?type=tv&limit=8"
         );
         const data = await res.json();
-        console.log(data);
         setDataTv(data.products);
       } catch (error) {
         console.log(error);

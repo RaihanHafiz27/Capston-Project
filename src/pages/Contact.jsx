@@ -2,7 +2,7 @@ export const ContactUsPage = () => {
   return (
     <div className="flex justify-center min-h-screen pb-10 pt-28 bg-gray-50 dark:bg-gray-900">
       <div className="w-4/5 2xl:w-3/5">
-        {/* Header Section */}
+        {/* Start Header Section */}
         <div className="mb-12 text-center">
           <h1 className="text-5xl font-bold text-gray-800 dark:text-slate-200">
             Get in Touch with <span className="text-rose-600">LUXURA</span>
@@ -12,8 +12,8 @@ export const ContactUsPage = () => {
             us using the form below or through our other channels.
           </p>
         </div>
-
-        {/* Contact Form and Info Section */}
+        {/* End Header Section */}
+        {/* Start Contact Form and Info Section */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* Contact Form */}
           <div className="p-8 bg-white rounded-lg shadow-lg">
@@ -71,8 +71,8 @@ export const ContactUsPage = () => {
               </button>
             </form>
           </div>
-
-          {/* Contact Info */}
+          {/* End Contact Form and Info Section */}
+          {/* Start Contact Info */}
           <div className="p-8 text-white rounded-lg bg-gradient-to-r from-rose-500 to-rose-600">
             <h2 className="mb-6 text-2xl font-semibold">Contact Information</h2>
             <div className="space-y-4">
@@ -106,6 +106,7 @@ export const ContactUsPage = () => {
               </div>
             </div>
           </div>
+          {/* End Contact Info */}
         </div>
       </div>
     </div>
