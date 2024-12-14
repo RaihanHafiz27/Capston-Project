@@ -19,7 +19,7 @@ export const FormLogin = () => {
     };
 
     login(dataUser, (status, token) => {
-      setIsLoading(false); // Selesai loading
+      setIsLoading(false);
       if (status) {
         localStorage.setItem("token", token);
         navigate("/products");

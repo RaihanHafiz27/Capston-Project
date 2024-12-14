@@ -1,11 +1,7 @@
-// import { Link } from "react-router-dom";
-
 import { Link, Outlet, useLocation } from "react-router-dom";
-
 import { useState } from "react";
 import TypewriterComponent from "typewriter-effect";
 import { SignInWith } from "../fragments/SignInWith";
-import { FormLogin } from "../fragments/Form/FormLogin";
 
 export const AuthLayout = () => {
   const [isHover, setIsHover] = useState(false);

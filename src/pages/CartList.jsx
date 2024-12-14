@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Successful } from "../components/fragments/Modals/Successful";
+import { ModalCheckout } from "../components/fragments/Modals/ModalCheckout";
 
 const dataPayment = [
   {
@@ -29,6 +29,7 @@ export const CartPage = () => {
   const dataCart = useSelector((state) => state.dataProducts.cartItem);
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [isWarning, setIsWarning] = useState(false);
 
   const TotalPrice = dataCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -60,6 +61,7 @@ export const CartPage = () => {
           <div className="flex justify-end w-2/5 ">
             <FormPayment
               setIsOpen={setIsOpen}
+              setIsWarning={setIsWarning}
               dataPayment={dataPayment}
               TotalPrice={TotalPrice}
               dataCart={dataCart}
@@ -67,7 +69,7 @@ export const CartPage = () => {
           </div>
         </div>
       </div>
-      {isOpen && <Successful />}
+      {isOpen && <ModalCheckout isWarning={isWarning} />}
     </section>
   );
 };
@@ -130,7 +132,7 @@ const ListItem = (props) => {
 };
 
 const FormPayment = (props) => {
-  const { TotalPrice, dataCart, setIsOpen } = props;
+  const { TotalPrice, dataCart, setIsOpen, setIsWarning } = props;
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [nameCard, setNameCard] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -156,10 +158,14 @@ const FormPayment = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!selectedPayment || !nameCard || !cardNumber || !expDate || !cvv) {
-      alert("mohon isi data anda!!");
+      setIsOpen(true);
+      setIsWarning(true);
+      setTimeout(() => setIsOpen(false), 3000);
+      // alert("mohon isi data anda!!");
     } else {
       saveToLocal();
       dispatch({ type: "CHECKOUT", payload: dataCheckout.products });
+      setIsWarning(false);
       setIsOpen(true);
       setTimeout(() => setIsOpen(false), 2000);
     }

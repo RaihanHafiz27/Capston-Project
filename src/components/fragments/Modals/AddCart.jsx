@@ -7,14 +7,17 @@ export const AddCart = (props) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
   const [isConfirm, setIsConfirm] = useState(false);
+  const [isWarning, setIsWarning] = useState(false);
 
   const handleConfirm = () => {
     if (quantity > 0) {
       dispatch(addToCart(product, quantity));
+      setIsWarning(false);
       setIsConfirm(true);
       setTimeout(() => modalClose(), 2000);
     } else {
-      alert("Quantity must be greater than 0");
+      setIsWarning(true);
+      setTimeout(() => modalClose(), 3000);
     }
   };
 
@@ -32,8 +35,19 @@ export const AddCart = (props) => {
                   alt="Success"
                   className="object-contain w-32 h-32"
                 />
-                <p className="mt-4 text-sm text-center text-gray-700">
+                <p className="mt-4 text-sm font-semibold text-center text-gray-700">
                   Added to Cart Successfully!
+                </p>
+              </div>
+            ) : isWarning ? (
+              <div className="flex flex-col items-center justify-center">
+                <img
+                  src="/images/payments/alert.gif"
+                  alt="Alert"
+                  className="object-contain w-32 h-32"
+                />
+                <p className="mt-4 text-sm font-semibold text-center text-gray-700">
+                  Quantity must be greater than 0!!!
                 </p>
               </div>
             ) : (

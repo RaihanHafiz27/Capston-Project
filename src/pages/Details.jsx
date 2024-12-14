@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AddCart } from "../components/fragments/Modals/AddCart";
 
 export const DetailsProducts = () => {
@@ -8,7 +8,7 @@ export const DetailsProducts = () => {
   const { id } = useParams();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
+  const navigate = useNavigate();
   const product = products.find((item) => item.id == id);
 
   const modalOpen = (product) => {
@@ -17,7 +17,7 @@ export const DetailsProducts = () => {
       setIsOpen(true);
       setSelectedProduct(product);
     } else {
-      Navigate("/signin");
+      navigate("/signin");
     }
   };
 

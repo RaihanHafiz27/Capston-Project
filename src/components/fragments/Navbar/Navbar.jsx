@@ -49,7 +49,7 @@ const subLinksServices = [
 
 const ellipsisLinks = [
   { title: "Profile", to: "/profile" },
-  { title: "Order History", to: "/orders" },
+  { title: "Order History", to: "/profile" },
   { title: "Wishlist", to: "/wishlist" },
 ];
 
@@ -237,7 +237,6 @@ const LinksMobileScreen = () => {
   );
 };
 
-// Komponen Dropdown Menu
 const DropdownMenu = ({ links, isOpen, closeMenu }) => {
   const token = localStorage.getItem("token");
   const handleLogout = () => {
@@ -282,7 +281,6 @@ const DropdownMenu = ({ links, isOpen, closeMenu }) => {
   );
 };
 
-// Komponen Ellipsis Menu
 const EllipsisMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -300,7 +298,6 @@ const EllipsisMenu = () => {
       <button onClick={toggleMenu} className="">
         <EllipsisIcon />
       </button>
-
       {/* Dropdown Menu */}
       <DropdownMenu
         links={ellipsisLinks}
